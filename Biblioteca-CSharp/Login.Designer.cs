@@ -38,8 +38,9 @@
             this.pbImageBook = new System.Windows.Forms.PictureBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.btLogin = new System.Windows.Forms.Button();
-            this.btNewUser = new System.Windows.Forms.Button();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImageBook)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // tbUsername
@@ -103,28 +104,23 @@
             // 
             // btLogin
             // 
-            this.btLogin.Location = new System.Drawing.Point(78, 142);
+            this.btLogin.Location = new System.Drawing.Point(78, 171);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(136, 23);
             this.btLogin.TabIndex = 6;
             this.btLogin.Text = "Entrar";
             this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
-            // btNewUser
+            // errorProvider2
             // 
-            this.btNewUser.Location = new System.Drawing.Point(78, 171);
-            this.btNewUser.Name = "btNewUser";
-            this.btNewUser.Size = new System.Drawing.Size(136, 23);
-            this.btNewUser.TabIndex = 7;
-            this.btNewUser.Text = "Novo Usuário";
-            this.btNewUser.UseVisualStyleBackColor = true;
+            this.errorProvider2.ContainerControl = this;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 225);
-            this.Controls.Add(this.btNewUser);
             this.Controls.Add(this.btLogin);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.pbImageBook);
@@ -139,6 +135,7 @@
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImageBook)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,7 +151,7 @@
         private System.Windows.Forms.PictureBox pbImageBook;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btLogin;
-        private System.Windows.Forms.Button btNewUser;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }
 
