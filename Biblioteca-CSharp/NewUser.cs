@@ -17,6 +17,8 @@ namespace Biblioteca_CSharp
         public NewUser()
         {
             InitializeComponent();
+            tbSenha.PasswordChar = '*';
+            tbEstado.MaxLength = 2;
         }
 
         private void lbNome_Click(object sender, EventArgs e)
@@ -36,39 +38,223 @@ namespace Biblioteca_CSharp
             connection = new SqlConnection(connectionString);
 
             commandAddress = new SqlCommand(
-                "INSERT INTO ENDERECO (NUMERO, RUA, COMPLEMENTO, CEP, CIDADE, ESTADO, PAIS)" +
-                "VALUES (@NUMERO, @RUA, @COMPLEMENTO, @CEP, @CIDADE, @ESTADO, @PAIS) ", connection);
-            try {
-                commandAddress.Parameters.Add("@NUMERO", System.Data.SqlDbType.Int);
-                commandAddress.Parameters["@NUMERO"].Value = Convert.ToInt32(tbNumero.Text);
+                "INSERT INTO ENDERECO (NUMERO, RUA, COMPLEMENTO, CEP, CIDADE, ESTADO, PAIS, BAIRRO)" +
+                "VALUES (@NUMERO, @RUA, @COMPLEMENTO, @CEP, @CIDADE, @ESTADO, @PAIS, @BAIRRO) ", connection);
 
-                commandAddress.Parameters.Add("@RUA", System.Data.SqlDbType.NVarChar);
-                commandAddress.Parameters["@RUA"].Value = tbRua.Text;
+            command = new SqlCommand("INSERT INTO USUARIO (NOME, CPF, IDADE, TELEFONE, ATIVO, EMAIL, FUNCIONARIO, LOGIN, SENHA, ID_ENDERECO) VALUES" +
+                    "(@NOME, @CPF, @IDADE, @TELEFONE, @ATIVO, @EMAIL, @FUNCIONARIO, @LOGIN, @SENHA, @ID_ENDERECO)", connection);
+            try {
+                isOperationOk = true;
+                if (String.IsNullOrEmpty(tbNumero.Text))
+                {
+                    errorNumero.SetError(tbNumero, "Número é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    commandAddress.Parameters.Add("@NUMERO", System.Data.SqlDbType.Int);
+                    commandAddress.Parameters["@NUMERO"].Value = Convert.ToInt32(tbNumero.Text);
+                    errorNumero.SetError(tbNumero, "");
+                }
+
+                if (String.IsNullOrEmpty(tbRua.Text))
+                {
+                    errorRua.SetError(tbRua, "Rua é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    commandAddress.Parameters.Add("@RUA", System.Data.SqlDbType.NVarChar);
+                    commandAddress.Parameters["@RUA"].Value = tbRua.Text;
+                    errorRua.SetError(tbRua, "");
+                }
 
                 commandAddress.Parameters.Add("@COMPLEMENTO", System.Data.SqlDbType.NVarChar);
                 commandAddress.Parameters["@COMPLEMENTO"].Value = tbComplemento.Text;
 
-                commandAddress.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
-                commandAddress.Parameters["@CEP"].Value = tbCEP.Text;
+                if (String.IsNullOrEmpty(tbCEP.Text) || tbCEP.Text.Equals("     -"))
+                {
+                    errorCEP.SetError(tbCEP, "CEP é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    commandAddress.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+                    commandAddress.Parameters["@CEP"].Value = tbCEP.Text;
+                    errorCEP.SetError(tbCEP, "");
+                }
 
-                commandAddress.Parameters.Add("@CIDADE", System.Data.SqlDbType.NVarChar);
-                commandAddress.Parameters["@CIDADE"].Value = tbCidade.Text;
+                if (String.IsNullOrEmpty(tbCidade.Text))
+                {
+                    errorCidade.SetError(tbCidade, "Cidade é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    commandAddress.Parameters.Add("@CIDADE", System.Data.SqlDbType.NVarChar);
+                    commandAddress.Parameters["@CIDADE"].Value = tbCidade.Text;
+                    errorCidade.SetError(tbCidade, "");
+                }
 
-                commandAddress.Parameters.Add("@ESTADO", System.Data.SqlDbType.NVarChar);
-                commandAddress.Parameters["@ESTADO"].Value = tbEstado.Text;
+                if (String.IsNullOrEmpty(tbEstado.Text))
+                {
+                    errorEstado.SetError(tbEstado, "Estado é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    commandAddress.Parameters.Add("@ESTADO", System.Data.SqlDbType.NVarChar);
+                    commandAddress.Parameters["@ESTADO"].Value = tbEstado.Text;
+                    errorEstado.SetError(tbEstado, "");
+                }
 
-                commandAddress.Parameters.Add("@PAIS", System.Data.SqlDbType.NVarChar);
-                commandAddress.Parameters["@PAIS"].Value = tbPais.Text;
+                if (String.IsNullOrEmpty(tbPais.Text))
+                {
+                    paisError.SetError(tbPais, "País é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    commandAddress.Parameters.Add("@PAIS", System.Data.SqlDbType.NVarChar);
+                    commandAddress.Parameters["@PAIS"].Value = tbPais.Text;
+                    paisError.SetError(tbPais, "");
+                }
+
+                if (String.IsNullOrEmpty(tbBairro.Text))
+                {
+                    errorBairro.SetError(tbBairro, "Bairro é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    commandAddress.Parameters.Add("@BAIRRO", System.Data.SqlDbType.NVarChar);
+                    commandAddress.Parameters["@BAIRRO"].Value = tbBairro.Text;
+                    errorBairro.SetError(tbBairro, "");
+                }
+
+                if (String.IsNullOrEmpty(tbNome.Text))
+                {
+                    errorName.SetError(tbNome, "Nome é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    command.Parameters.Add("@NOME", System.Data.SqlDbType.NVarChar);
+                    command.Parameters["@NOME"].Value = tbNome.Text;
+                    errorName.SetError(tbNome, "");
+                }
+                Console.WriteLine(tbCPF.Text);
+                if (String.IsNullOrEmpty(tbCPF.Text) || tbCPF.Text.Equals("   .   .   -"))
+                {
+                    errorProvider1.SetError(tbCPF, "CPF é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    command.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+                    command.Parameters["@CPF"].Value = tbCPF.Text;
+                    errorProvider1.SetError(tbCPF, "");
+                }
+
+                if (String.IsNullOrEmpty(tbIdade.Text))
+                {
+                    errorIdade.SetError(tbIdade, "Idade é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    command.Parameters.Add("@IDADE", System.Data.SqlDbType.Int);
+                    command.Parameters["@IDADE"].Value = Convert.ToInt32(tbIdade.Text);
+                    errorIdade.SetError(tbIdade, "");
+                }
+
+                if (String.IsNullOrEmpty(tbEmail.Text))
+                {
+                    errorEmail.SetError(tbEmail, "E-mail é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    command.Parameters.Add("@EMAIL", System.Data.SqlDbType.NVarChar);
+                    command.Parameters["@EMAIL"].Value = tbEmail.Text;
+                    errorEmail.SetError(tbEmail, "");
+                }
+                Console.WriteLine(tbTelefone.Text);
+                if (String.IsNullOrEmpty(tbTelefone.Text) || tbTelefone.Text.Equals("(  )     -"))
+                {
+                    errorTelefone.SetError(tbTelefone, "Telefone é um campo obrigatório!");
+                    isOperationOk = false;
+                }
+                else
+                {
+                    command.Parameters.Add("@TELEFONE", System.Data.SqlDbType.NVarChar);
+                    command.Parameters["@TELEFONE"].Value = tbTelefone.Text;
+                    errorTelefone.SetError(tbTelefone, "");
+                }
+
+                command.Parameters.Add("@ATIVO", System.Data.SqlDbType.Int);
+                command.Parameters["@ATIVO"].Value = Convert.ToInt32(cbUserEnable.Checked);
+
+                command.Parameters.Add("@FUNCIONARIO", System.Data.SqlDbType.Int);
+                command.Parameters["@FUNCIONARIO"].Value = Convert.ToInt32( cbIsAdminUser.Checked);
+
+                if (cbIsAdminUser.Checked)
+                {
+                    if (String.IsNullOrEmpty(tbLogin.Text))
+                    {
+                        errorLogin.SetError(tbLogin, "O campo login é obrigatório para usuários administradores!");
+                        isOperationOk = false;
+                    }
+                    else
+                    {
+                        command.Parameters.Add("@LOGIN", System.Data.SqlDbType.NVarChar);
+                        command.Parameters["@LOGIN"].Value = tbLogin.Text;
+                        errorLogin.SetError(tbLogin, "");
+                    }
+
+                    if (String.IsNullOrEmpty(tbSenha.Text))
+                    {
+                        errorSenha.SetError(tbSenha, "O campo senha é obrigatório para usuários administradores!");
+                        isOperationOk = false;
+                    }
+                    else
+                    {
+                        command.Parameters.Add("@SENHA", System.Data.SqlDbType.NVarChar);
+                        command.Parameters["@SENHA"].Value = tbSenha.Text;
+                        errorSenha.SetError(tbSenha, "");
+                    }
+                }
+                else{
+                    command.Parameters.Add("@LOGIN", System.Data.SqlDbType.NVarChar);
+                    command.Parameters["@LOGIN"].Value = "";
+                    command.Parameters.Add("@SENHA", System.Data.SqlDbType.NVarChar);
+                    command.Parameters["@SENHA"].Value = "";
+                }
+
+                if (isOperationOk)
+                {
+                    connection.Open();
+                    commandAddress.ExecuteNonQuery();
+
+                    command.Parameters.Add("@ID_ENDERECO", System.Data.SqlDbType.Int);
+                    command.Parameters["@ID_ENDERECO"].Value = Convert.ToInt32(getId());
+
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Usuário Cadastrado com sucesso!", "Cadastro Válido", MessageBoxButtons.OK);
+                    this.Close();
+             
+                }
 
             } catch (Exception error)
             {
                 isOperationOk = false;
                 MessageBox.Show(error.Message, "Campos Incorretos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
-
-            command = new SqlCommand(
-                "INSERT INTO USUARIO (NOME, CPF, IDADE, TELEFONE, ATIVO, EMAIL, FUNCIONARIO, LOGIN, SENHA)"    
-            );
+            }
+            finally
+            {
+                connection.Close();
+            }
+            
         }
         private void groupBox2_Enter(object sender, EventArgs e)
         {
@@ -122,8 +308,35 @@ namespace Biblioteca_CSharp
                 errorProvider1.SetError(tbCPF, "");
             }
         }
-
+        public string getId()
+        {
+            string codigo = "";
+            string connectionString = Properties.Settings.Default.BibliotecaConnectionString;
+            SqlConnection conn = new SqlConnection(connectionString);
+            string sql = "SELECT max(ID) AS 'ID' FROM ENDERECO";
+            SqlCommand cmd = new SqlCommand(sql.ToString(), conn);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                codigo = reader["ID"].ToString();
+            }
+            conn.Close();
+            return codigo;
+        }
         private void cbIsAdminUser_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbIsAdminUser.Checked)
+            {
+                gbAcess.Visible = true;
+            }
+            else{
+                gbAcess.Visible = false;
+            }
+        }
+
+        private void tbBairro_TextChanged(object sender, EventArgs e)
         {
 
         }

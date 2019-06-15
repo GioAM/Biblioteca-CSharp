@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.cbIsAdminUser = new System.Windows.Forms.CheckBox();
             this.cbUserEnable = new System.Windows.Forms.CheckBox();
             this.tbTelefone = new System.Windows.Forms.MaskedTextBox();
@@ -42,6 +44,8 @@
             this.lbNome = new System.Windows.Forms.Label();
             this.btAdd = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbComplemento = new System.Windows.Forms.TextBox();
+            this.lbComplemento = new System.Windows.Forms.Label();
             this.tbPais = new System.Windows.Forms.TextBox();
             this.tbEstado = new System.Windows.Forms.TextBox();
             this.tbCidade = new System.Windows.Forms.TextBox();
@@ -57,19 +61,41 @@
             this.lbBairro = new System.Windows.Forms.Label();
             this.lbRua = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tbEmail = new System.Windows.Forms.TextBox();
-            this.lbEmail = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbAcess = new System.Windows.Forms.GroupBox();
             this.tbSenha = new System.Windows.Forms.TextBox();
-            this.lbSenha = new System.Windows.Forms.Label();
             this.tbLogin = new System.Windows.Forms.TextBox();
+            this.lbSenha = new System.Windows.Forms.Label();
             this.lbLogin = new System.Windows.Forms.Label();
-            this.tbComplemento = new System.Windows.Forms.TextBox();
-            this.lbComplemento = new System.Windows.Forms.Label();
+            this.errorName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorIdade = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorTelefone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorRua = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorCidade = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEstado = new System.Windows.Forms.ErrorProvider(this.components);
+            this.paisError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorBairro = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorNumero = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorCEP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorSenha = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorLogin = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.gbAcess.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIdade)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorTelefone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorRua)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCidade)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEstado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paisError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorBairro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorNumero)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCEP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSenha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -92,6 +118,22 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados no Usuário";
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.Location = new System.Drawing.Point(98, 107);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(100, 20);
+            this.tbEmail.TabIndex = 10;
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Location = new System.Drawing.Point(27, 107);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(32, 13);
+            this.lbEmail.TabIndex = 9;
+            this.lbEmail.Text = "Email";
             // 
             // cbIsAdminUser
             // 
@@ -218,6 +260,22 @@
             this.groupBox2.Text = "Dados do Endereço";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // tbComplemento
+            // 
+            this.tbComplemento.Location = new System.Drawing.Point(306, 31);
+            this.tbComplemento.Name = "tbComplemento";
+            this.tbComplemento.Size = new System.Drawing.Size(100, 20);
+            this.tbComplemento.TabIndex = 15;
+            // 
+            // lbComplemento
+            // 
+            this.lbComplemento.AutoSize = true;
+            this.lbComplemento.Location = new System.Drawing.Point(234, 31);
+            this.lbComplemento.Name = "lbComplemento";
+            this.lbComplemento.Size = new System.Drawing.Size(71, 13);
+            this.lbComplemento.TabIndex = 14;
+            this.lbComplemento.Text = "Complemento";
+            // 
             // tbPais
             // 
             this.tbPais.Location = new System.Drawing.Point(306, 120);
@@ -276,7 +334,7 @@
             // tbCEP
             // 
             this.tbCEP.Location = new System.Drawing.Point(98, 117);
-            this.tbCEP.Mask = "000000-000";
+            this.tbCEP.Mask = "00000-000";
             this.tbCEP.Name = "tbCEP";
             this.tbCEP.Size = new System.Drawing.Size(100, 20);
             this.tbCEP.TabIndex = 6;
@@ -287,6 +345,7 @@
             this.tbBairro.Name = "tbBairro";
             this.tbBairro.Size = new System.Drawing.Size(100, 20);
             this.tbBairro.TabIndex = 4;
+            this.tbBairro.TextChanged += new System.EventHandler(this.tbBairro_TextChanged);
             // 
             // tbRua
             // 
@@ -335,34 +394,19 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // tbEmail
+            // gbAcess
             // 
-            this.tbEmail.Location = new System.Drawing.Point(98, 107);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(100, 20);
-            this.tbEmail.TabIndex = 10;
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(27, 107);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(32, 13);
-            this.lbEmail.TabIndex = 9;
-            this.lbEmail.Text = "Email";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.tbSenha);
-            this.groupBox3.Controls.Add(this.tbLogin);
-            this.groupBox3.Controls.Add(this.lbSenha);
-            this.groupBox3.Controls.Add(this.lbLogin);
-            this.groupBox3.Location = new System.Drawing.Point(43, 346);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(499, 80);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Dados de Acesso";
+            this.gbAcess.Controls.Add(this.tbSenha);
+            this.gbAcess.Controls.Add(this.tbLogin);
+            this.gbAcess.Controls.Add(this.lbSenha);
+            this.gbAcess.Controls.Add(this.lbLogin);
+            this.gbAcess.Location = new System.Drawing.Point(43, 346);
+            this.gbAcess.Name = "gbAcess";
+            this.gbAcess.Size = new System.Drawing.Size(499, 80);
+            this.gbAcess.TabIndex = 8;
+            this.gbAcess.TabStop = false;
+            this.gbAcess.Text = "Dados de Acesso";
+            this.gbAcess.Visible = false;
             // 
             // tbSenha
             // 
@@ -370,6 +414,13 @@
             this.tbSenha.Name = "tbSenha";
             this.tbSenha.Size = new System.Drawing.Size(100, 20);
             this.tbSenha.TabIndex = 17;
+            // 
+            // tbLogin
+            // 
+            this.tbLogin.Location = new System.Drawing.Point(98, 35);
+            this.tbLogin.Name = "tbLogin";
+            this.tbLogin.Size = new System.Drawing.Size(100, 20);
+            this.tbLogin.TabIndex = 15;
             // 
             // lbSenha
             // 
@@ -380,13 +431,6 @@
             this.lbSenha.TabIndex = 16;
             this.lbSenha.Text = "Senha";
             // 
-            // tbLogin
-            // 
-            this.tbLogin.Location = new System.Drawing.Point(98, 35);
-            this.tbLogin.Name = "tbLogin";
-            this.tbLogin.Size = new System.Drawing.Size(100, 20);
-            this.tbLogin.TabIndex = 15;
-            // 
             // lbLogin
             // 
             this.lbLogin.AutoSize = true;
@@ -396,28 +440,64 @@
             this.lbLogin.TabIndex = 14;
             this.lbLogin.Text = "Login";
             // 
-            // tbComplemento
+            // errorName
             // 
-            this.tbComplemento.Location = new System.Drawing.Point(306, 31);
-            this.tbComplemento.Name = "tbComplemento";
-            this.tbComplemento.Size = new System.Drawing.Size(100, 20);
-            this.tbComplemento.TabIndex = 15;
+            this.errorName.ContainerControl = this;
             // 
-            // lbComplemento
+            // errorIdade
             // 
-            this.lbComplemento.AutoSize = true;
-            this.lbComplemento.Location = new System.Drawing.Point(234, 31);
-            this.lbComplemento.Name = "lbComplemento";
-            this.lbComplemento.Size = new System.Drawing.Size(71, 13);
-            this.lbComplemento.TabIndex = 14;
-            this.lbComplemento.Text = "Complemento";
+            this.errorIdade.ContainerControl = this;
+            // 
+            // errorTelefone
+            // 
+            this.errorTelefone.ContainerControl = this;
+            // 
+            // errorEmail
+            // 
+            this.errorEmail.ContainerControl = this;
+            // 
+            // errorRua
+            // 
+            this.errorRua.ContainerControl = this;
+            // 
+            // errorCidade
+            // 
+            this.errorCidade.ContainerControl = this;
+            // 
+            // errorEstado
+            // 
+            this.errorEstado.ContainerControl = this;
+            // 
+            // paisError
+            // 
+            this.paisError.ContainerControl = this;
+            // 
+            // errorBairro
+            // 
+            this.errorBairro.ContainerControl = this;
+            // 
+            // errorNumero
+            // 
+            this.errorNumero.ContainerControl = this;
+            // 
+            // errorCEP
+            // 
+            this.errorCEP.ContainerControl = this;
+            // 
+            // errorSenha
+            // 
+            this.errorSenha.ContainerControl = this;
+            // 
+            // errorLogin
+            // 
+            this.errorLogin.ContainerControl = this;
             // 
             // NewUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 480);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.gbAcess);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.groupBox1);
@@ -428,8 +508,21 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbAcess.ResumeLayout(false);
+            this.gbAcess.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIdade)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorTelefone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorRua)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCidade)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEstado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paisError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorBairro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorNumero)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCEP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSenha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLogin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -466,12 +559,25 @@
         private System.Windows.Forms.CheckBox cbUserEnable;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Label lbEmail;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbAcess;
         private System.Windows.Forms.TextBox tbSenha;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.Label lbSenha;
         private System.Windows.Forms.Label lbLogin;
         private System.Windows.Forms.TextBox tbComplemento;
         private System.Windows.Forms.Label lbComplemento;
+        private System.Windows.Forms.ErrorProvider errorName;
+        private System.Windows.Forms.ErrorProvider errorIdade;
+        private System.Windows.Forms.ErrorProvider errorTelefone;
+        private System.Windows.Forms.ErrorProvider errorEmail;
+        private System.Windows.Forms.ErrorProvider errorRua;
+        private System.Windows.Forms.ErrorProvider errorCidade;
+        private System.Windows.Forms.ErrorProvider errorEstado;
+        private System.Windows.Forms.ErrorProvider paisError;
+        private System.Windows.Forms.ErrorProvider errorBairro;
+        private System.Windows.Forms.ErrorProvider errorNumero;
+        private System.Windows.Forms.ErrorProvider errorCEP;
+        private System.Windows.Forms.ErrorProvider errorSenha;
+        private System.Windows.Forms.ErrorProvider errorLogin;
     }
 }

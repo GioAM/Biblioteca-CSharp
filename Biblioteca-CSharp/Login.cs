@@ -13,9 +13,13 @@ namespace Biblioteca_CSharp
 {
     public partial class Login : Form
     {
-        public Login()
+        Dashboard db;
+
+        public Login(Dashboard _db)
         {
             InitializeComponent();
+            db = _db;
+            db.Visible = false;
             tbPassword.PasswordChar = '*';
         }
 
@@ -56,8 +60,8 @@ namespace Biblioteca_CSharp
                 {
                     if (reader["SENHA"].ToString().Equals(tbPassword.Text))
                     {
-                        Dashboard dashboard = new Dashboard();
-                        dashboard.Show();
+                        db.Visible = true;
+                        this.Close();
                     }
                     else
                     {
@@ -78,6 +82,11 @@ namespace Biblioteca_CSharp
             {
                 connection.Close();
             }
+        }
+
+        private void tbPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
