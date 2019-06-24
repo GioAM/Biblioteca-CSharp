@@ -62,7 +62,7 @@
             this.btUsuario.Name = "btUsuario";
             this.btUsuario.Size = new System.Drawing.Size(248, 74);
             this.btUsuario.TabIndex = 0;
-            this.btUsuario.Text = " ";
+            this.btUsuario.Text = " Usuários";
             this.btUsuario.UseVisualStyleBackColor = true;
             this.btUsuario.Click += new System.EventHandler(this.btUsuario_Click);
             // 
@@ -73,6 +73,7 @@
             this.btLivros.Name = "btLivros";
             this.btLivros.Size = new System.Drawing.Size(248, 74);
             this.btLivros.TabIndex = 1;
+            this.btLivros.Text = "Livros";
             this.btLivros.UseVisualStyleBackColor = true;
             this.btLivros.Click += new System.EventHandler(this.btLivros_Click);
             // 
@@ -83,6 +84,7 @@
             this.btCategoria.Name = "btCategoria";
             this.btCategoria.Size = new System.Drawing.Size(248, 74);
             this.btCategoria.TabIndex = 2;
+            this.btCategoria.Text = "Editoras";
             this.btCategoria.UseVisualStyleBackColor = true;
             this.btCategoria.Click += new System.EventHandler(this.btCategoria_Click);
             // 
@@ -93,7 +95,9 @@
             this.btLocacao.Name = "btLocacao";
             this.btLocacao.Size = new System.Drawing.Size(248, 74);
             this.btLocacao.TabIndex = 3;
+            this.btLocacao.Text = "Locação";
             this.btLocacao.UseVisualStyleBackColor = true;
+            this.btLocacao.Click += new System.EventHandler(this.btLocacao_Click);
             // 
             // lbTitle
             // 
@@ -191,6 +195,7 @@
             this.btMultas.Name = "btMultas";
             this.btMultas.Size = new System.Drawing.Size(248, 74);
             this.btMultas.TabIndex = 14;
+            this.btMultas.Text = "Multas";
             this.btMultas.UseVisualStyleBackColor = true;
             // 
             // pictureBox8

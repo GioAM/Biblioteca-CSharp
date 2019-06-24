@@ -1,6 +1,6 @@
 ﻿namespace Biblioteca_CSharp
 {
-    partial class NewBook
+    partial class UpdateBook
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.btSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbAno = new System.Windows.Forms.MaskedTextBox();
             this.tbEdicao = new System.Windows.Forms.MaskedTextBox();
@@ -38,26 +39,33 @@
             this.lbEdicao = new System.Windows.Forms.Label();
             this.lbAutor = new System.Windows.Forms.Label();
             this.lbNome = new System.Windows.Forms.Label();
-            this.btSalvar = new System.Windows.Forms.Button();
-            this.errorNome = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorAutor = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorNome = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorEdicao = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorQuantidade = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorCategoria = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.cbEditora = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
             this.eDITORABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.eDITORATableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.EDITORATableAdapter();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorNome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorAutor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorNome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEdicao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorQuantidade)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorCategoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eDITORABindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btSalvar
+            // 
+            this.btSalvar.Location = new System.Drawing.Point(389, 161);
+            this.btSalvar.Name = "btSalvar";
+            this.btSalvar.Size = new System.Drawing.Size(122, 33);
+            this.btSalvar.TabIndex = 4;
+            this.btSalvar.Text = "Alterar Livro";
+            this.btSalvar.UseVisualStyleBackColor = true;
+            this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
             // 
             // groupBox1
             // 
@@ -74,7 +82,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(499, 143);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados ";
             // 
@@ -82,7 +90,7 @@
             // 
             this.tbAno.Location = new System.Drawing.Point(326, 69);
             this.tbAno.Name = "tbAno";
-            this.tbAno.Size = new System.Drawing.Size(121, 20);
+            this.tbAno.Size = new System.Drawing.Size(116, 20);
             this.tbAno.TabIndex = 6;
             // 
             // tbEdicao
@@ -96,7 +104,7 @@
             // 
             this.tbAutor.Location = new System.Drawing.Point(326, 31);
             this.tbAutor.Name = "tbAutor";
-            this.tbAutor.Size = new System.Drawing.Size(121, 20);
+            this.tbAutor.Size = new System.Drawing.Size(116, 20);
             this.tbAutor.TabIndex = 4;
             // 
             // tbNome
@@ -142,23 +150,13 @@
             this.lbNome.TabIndex = 0;
             this.lbNome.Text = "Nome";
             // 
-            // btSalvar
+            // errorAutor
             // 
-            this.btSalvar.Location = new System.Drawing.Point(389, 161);
-            this.btSalvar.Name = "btSalvar";
-            this.btSalvar.Size = new System.Drawing.Size(122, 33);
-            this.btSalvar.TabIndex = 2;
-            this.btSalvar.Text = "Salvar";
-            this.btSalvar.UseVisualStyleBackColor = true;
-            this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
+            this.errorAutor.ContainerControl = this;
             // 
             // errorNome
             // 
             this.errorNome.ContainerControl = this;
-            // 
-            // errorAutor
-            // 
-            this.errorAutor.ContainerControl = this;
             // 
             // errorEdicao
             // 
@@ -168,29 +166,25 @@
             // 
             this.errorQuantidade.ContainerControl = this;
             // 
-            // errorCategoria
-            // 
-            this.errorCategoria.ContainerControl = this;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 109);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Editora";
-            // 
             // cbEditora
             // 
             this.cbEditora.DataSource = this.eDITORABindingSource;
             this.cbEditora.DisplayMember = "NOME";
             this.cbEditora.FormattingEnabled = true;
-            this.cbEditora.Location = new System.Drawing.Point(98, 106);
+            this.cbEditora.Location = new System.Drawing.Point(98, 116);
             this.cbEditora.Name = "cbEditora";
             this.cbEditora.Size = new System.Drawing.Size(121, 21);
-            this.cbEditora.TabIndex = 12;
+            this.cbEditora.TabIndex = 14;
             this.cbEditora.ValueMember = "ID";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 119);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Editora";
             // 
             // bibliotecaDataSet
             // 
@@ -206,23 +200,22 @@
             // 
             this.eDITORATableAdapter.ClearBeforeFill = true;
             // 
-            // NewBook
+            // UpdateBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 206);
+            this.ClientSize = new System.Drawing.Size(537, 208);
             this.Controls.Add(this.btSalvar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "NewBook";
-            this.Text = "Novo Livro";
-            this.Load += new System.EventHandler(this.NewBook_Load);
+            this.Name = "UpdateBook";
+            this.Text = "Alterar Livro";
+            this.Load += new System.EventHandler(this.UpdateBook_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorNome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorAutor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorNome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEdicao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorQuantidade)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorCategoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eDITORABindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -231,6 +224,7 @@
 
         #endregion
 
+        private System.Windows.Forms.Button btSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MaskedTextBox tbAno;
         private System.Windows.Forms.MaskedTextBox tbEdicao;
@@ -240,12 +234,10 @@
         private System.Windows.Forms.Label lbEdicao;
         private System.Windows.Forms.Label lbAutor;
         private System.Windows.Forms.Label lbNome;
-        private System.Windows.Forms.Button btSalvar;
-        private System.Windows.Forms.ErrorProvider errorNome;
         private System.Windows.Forms.ErrorProvider errorAutor;
+        private System.Windows.Forms.ErrorProvider errorNome;
         private System.Windows.Forms.ErrorProvider errorEdicao;
         private System.Windows.Forms.ErrorProvider errorQuantidade;
-        private System.Windows.Forms.ErrorProvider errorCategoria;
         private System.Windows.Forms.ComboBox cbEditora;
         private System.Windows.Forms.Label label1;
         private BibliotecaDataSet bibliotecaDataSet;

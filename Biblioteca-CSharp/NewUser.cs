@@ -14,11 +14,13 @@ namespace Biblioteca_CSharp
 {
     public partial class NewUser : Form
     {
-        public NewUser()
+        private Users user { set; get; }
+        public NewUser(Users user)
         {
             InitializeComponent();
             tbSenha.PasswordChar = '*';
             tbEstado.MaxLength = 2;
+            this.user = user;
         }
 
         private void lbNome_Click(object sender, EventArgs e)
@@ -37,13 +39,13 @@ namespace Biblioteca_CSharp
 
             connection = new SqlConnection(connectionString);
 
-            commandAddress = new SqlCommand(
-                "INSERT INTO ENDERECO (NUMERO, RUA, COMPLEMENTO, CEP, CIDADE, ESTADO, PAIS, BAIRRO)" +
+            commandAddress = new SqlCommand("INSERT INTO ENDERECO (NUMERO, RUA, COMPLEMENTO, CEP, CIDADE, ESTADO, PAIS, BAIRRO)" +
                 "VALUES (@NUMERO, @RUA, @COMPLEMENTO, @CEP, @CIDADE, @ESTADO, @PAIS, @BAIRRO) ", connection);
 
             command = new SqlCommand("INSERT INTO USUARIO (NOME, CPF, IDADE, TELEFONE, ATIVO, EMAIL, FUNCIONARIO, LOGIN, SENHA, ID_ENDERECO) VALUES" +
                     "(@NOME, @CPF, @IDADE, @TELEFONE, @ATIVO, @EMAIL, @FUNCIONARIO, @LOGIN, @SENHA, @ID_ENDERECO)", connection);
-            try {
+            try
+            {
                 isOperationOk = true;
                 if (String.IsNullOrEmpty(tbNumero.Text))
                 {
@@ -196,7 +198,7 @@ namespace Biblioteca_CSharp
                 command.Parameters["@ATIVO"].Value = Convert.ToInt32(cbUserEnable.Checked);
 
                 command.Parameters.Add("@FUNCIONARIO", System.Data.SqlDbType.Int);
-                command.Parameters["@FUNCIONARIO"].Value = Convert.ToInt32( cbIsAdminUser.Checked);
+                command.Parameters["@FUNCIONARIO"].Value = Convert.ToInt32(cbIsAdminUser.Checked);
 
                 if (cbIsAdminUser.Checked)
                 {
@@ -224,7 +226,8 @@ namespace Biblioteca_CSharp
                         errorSenha.SetError(tbSenha, "");
                     }
                 }
-                else{
+                else
+                {
                     command.Parameters.Add("@LOGIN", System.Data.SqlDbType.NVarChar);
                     command.Parameters["@LOGIN"].Value = "";
                     command.Parameters.Add("@SENHA", System.Data.SqlDbType.NVarChar);
@@ -241,11 +244,13 @@ namespace Biblioteca_CSharp
 
                     command.ExecuteNonQuery();
                     MessageBox.Show("Usuário Cadastrado com sucesso!", "Cadastro Válido", MessageBoxButtons.OK);
+                    user.dataTable1TableAdapter.Fill(user.bibliotecaDataSet.DataTable1);
                     this.Close();
-             
+
                 }
 
-            } catch (Exception error)
+            }
+            catch (Exception error)
             {
                 isOperationOk = false;
                 MessageBox.Show(error.Message, "Campos Incorretos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -254,7 +259,7 @@ namespace Biblioteca_CSharp
             {
                 connection.Close();
             }
-            
+
         }
         private void groupBox2_Enter(object sender, EventArgs e)
         {
@@ -298,9 +303,13 @@ namespace Biblioteca_CSharp
 
         private void tbCPF_Validated(object sender, EventArgs e)
         {
-            if(IsCpf(tbCPF.Text) == false)
+            if (IsCpf(tbCPF.Text) == false)
             {
                 errorProvider1.SetError(tbCPF, "CPF Inválido!");
+                tbCPF.Focus();
+            }
+            else if(isUniqueCPF()){
+                errorProvider1.SetError(tbCPF, "CPF já cadastrado!");
                 tbCPF.Focus();
             }
             else
@@ -331,7 +340,8 @@ namespace Biblioteca_CSharp
             {
                 gbAcess.Visible = true;
             }
-            else{
+            else
+            {
                 gbAcess.Visible = false;
             }
         }
@@ -339,6 +349,50 @@ namespace Biblioteca_CSharp
         private void tbBairro_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        public Boolean isUniqueCPF()
+        {
+            SqlConnection connection;
+            SqlCommand commandCPF;
+            SqlDataReader reader;
+            int numberCPF = 0; 
+
+            string connectionString = Properties.Settings.Default.BibliotecaConnectionString;
+
+            connection = new SqlConnection(connectionString);
+
+            commandCPF = new SqlCommand("SELECT COUNT(*) AS 'TOTAL' FROM USUARIO WHERE CPF=@CPF", connection);
+
+            commandCPF.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+            commandCPF.Parameters["@CPF"].Value = tbCPF.Text;
+
+            try
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Falha ao conectar o Banco", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                reader = commandCPF.ExecuteReader();
+                if (reader.Read())
+                {
+                    numberCPF = Convert.ToInt32(reader["TOTAL"]);
+                }
+                reader.Close();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return numberCPF > 0;
         }
     }
 }

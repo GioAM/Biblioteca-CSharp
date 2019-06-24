@@ -7,47 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Biblioteca_CSharp
 {
-    public partial class Books : Form
+    public partial class Editora : Form
     {
-        public Books()
+        public Editora()
         {
             InitializeComponent();
         }
 
-        private void btNewBook_Click(object sender, EventArgs e)
+        private void btInsert_Click(object sender, EventArgs e)
         {
-            NewBook newBook = new NewBook(this);
-            newBook.ShowDialog();
+            NewEditora nEditora = new NewEditora(this);
+            nEditora.ShowDialog();
         }
 
-        private void Books_Load(object sender, EventArgs e)
+        private void Editora_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bibliotecaDataSet.DataTable3' table. You can move, or remove it, as needed.
-            this.dataTable3TableAdapter.Fill(this.bibliotecaDataSet.DataTable3);
-
-        }
-
-        private void btNewBook_Click_1(object sender, EventArgs e)
-        {
-            NewBook nBook = new NewBook(this);
-            nBook.Show();
-        }
-
-        private void btUpdate_Click(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(idToModify.Text))
-            {
-                UpdateBook book = new UpdateBook(Convert.ToInt32(idToModify.Text), this);
-                book.Show();
-            }
-            else
-            {
-                MessageBox.Show("Nenhum usuário selecionado. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
-            }
+            // TODO: This line of code loads data into the 'bibliotecaDataSet.EDITORA' table. You can move, or remove it, as needed.
+            this.eDITORATableAdapter.Fill(this.bibliotecaDataSet.EDITORA);
 
         }
 
@@ -72,7 +54,7 @@ namespace Biblioteca_CSharp
 
                     conn = new SqlConnection(connectionString);
 
-                    comm = new SqlCommand("DELETE FROM LIVRO WHERE ID = @Codigo", conn);
+                    comm = new SqlCommand("DELETE FROM EDITORA WHERE ID = @Codigo", conn);
                     comm.Parameters.Add("@Codigo", System.Data.SqlDbType.Int);
                     comm.Parameters["@Codigo"].Value = Convert.ToInt32(idToModify.Text);
 
@@ -110,15 +92,21 @@ namespace Biblioteca_CSharp
                         {
                             // Chama Função que atualiza os dados no DataGridView
                             MessageBox.Show("Registro Excluído!", "Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.dataTable3TableAdapter.Fill(this.bibliotecaDataSet.DataTable3);
+                            this.eDITORATableAdapter.Fill(this.bibliotecaDataSet.EDITORA);
                         }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Nenhum livro selecionado. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhuma editora selecionado. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
             }
+        }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateEditora update = new UpdateEditora(this, Convert.ToInt32(idToModify.Text));
+            update.ShowDialog();
         }
     }
 }

@@ -14,9 +14,11 @@ namespace Biblioteca_CSharp
 {
     public partial class NewBook : Form
     {
-        public NewBook()
+        Books book { get; set; }
+        public NewBook(Books book)
         {
             InitializeComponent();
+            this.book = book;
         }
 
         private void btSalvar_Click(object sender, EventArgs e)
@@ -30,8 +32,8 @@ namespace Biblioteca_CSharp
             connection = new SqlConnection(connectionString);
 
             command = new SqlCommand(
-                "INSERT INTO LIVRO (NOME, AUTOR, EDICAO, ANO, QUANTIDADE)" +
-                "VALUES (@NOME, @AUTOR, @EDICAO, @ANO, @QUANTIDADE) ", connection);
+                "INSERT INTO LIVRO (NOME, AUTOR, EDICAO, ANO, ID_EDITORA)" +
+                "VALUES (@NOME, @AUTOR, @EDICAO, @ANO, @ID_EDITORA) ", connection);
 
             try
             {
@@ -68,24 +70,18 @@ namespace Biblioteca_CSharp
                 else
                 {
                     command.Parameters.Add("@EDICAO", System.Data.SqlDbType.NVarChar);
-                    command.Parameters["@EDICAO"].Value = tbAutor.Text;
+                    command.Parameters["@EDICAO"].Value = tbEdicao.Text;
                     errorEdicao.SetError(tbEdicao, "");
                 }
+                Console.WriteLine(cbEditora.SelectedValue);
 
                 command.Parameters.Add("@ANO", System.Data.SqlDbType.Int);
                 command.Parameters["@ANO"].Value = Convert.ToInt32(tbAno.Text);
 
-                if (String.IsNullOrEmpty(tbQuantidade.Text))
-                {
-                    errorQuantidade.SetError(tbQuantidade, "Quantidade é um campo obrigatório!");
-                    isOperationOk = false;
-                }
-                else
-                {
-                    command.Parameters.Add("@QUANTIDADE", System.Data.SqlDbType.Int);
-                    command.Parameters["@QUANTIDADE"].Value = Convert.ToInt32(tbQuantidade.Text);
-                    errorQuantidade.SetError(tbQuantidade, "");
-                }
+                command.Parameters.Add("@ID_EDITORA", System.Data.SqlDbType.Int);
+                command.Parameters["@ID_EDITORA"].Value = Convert.ToInt32(cbEditora.SelectedValue);
+
+                
 
                 if (isOperationOk)
                 {
@@ -93,6 +89,7 @@ namespace Biblioteca_CSharp
 
                     command.ExecuteNonQuery();
                     MessageBox.Show("Livro Cadastrado com sucesso!", "Cadastro Válido", MessageBoxButtons.OK);
+                    book.dataTable3TableAdapter.Fill(book.bibliotecaDataSet.DataTable3);
                     this.Close();
 
                 }
@@ -106,6 +103,13 @@ namespace Biblioteca_CSharp
             {
                 connection.Close();
             }
+        }
+
+        private void NewBook_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'bibliotecaDataSet.EDITORA' table. You can move, or remove it, as needed.
+            this.eDITORATableAdapter.Fill(this.bibliotecaDataSet.EDITORA);
+
         }
     }
 }

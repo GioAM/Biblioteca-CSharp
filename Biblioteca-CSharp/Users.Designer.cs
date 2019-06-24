@@ -31,9 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.btInsert = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
-            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTable1TableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DataTable1TableAdapter();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,17 +49,21 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
             this.btUpdate = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
+            this.idToModify = new System.Windows.Forms.TextBox();
+            this.dataTable1TableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DataTable1TableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btInsert
             // 
             this.btInsert.CausesValidation = false;
-            this.btInsert.Location = new System.Drawing.Point(534, 413);
+            this.btInsert.Location = new System.Drawing.Point(536, 625);
             this.btInsert.Name = "btInsert";
             this.btInsert.Size = new System.Drawing.Size(245, 62);
             this.btInsert.TabIndex = 0;
@@ -74,6 +76,7 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -92,24 +95,19 @@
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17});
             this.dataGridView1.DataSource = this.dataTable1BindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(25, 18);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1311, 383);
+            this.dataGridView1.Size = new System.Drawing.Size(1311, 601);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // bibliotecaDataSet
+            // ID
             // 
-            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
-            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataTable1BindingSource
-            // 
-            this.dataTable1BindingSource.DataMember = "DataTable1";
-            this.dataTable1BindingSource.DataSource = this.bibliotecaDataSet;
-            // 
-            // dataTable1TableAdapter
-            // 
-            this.dataTable1TableAdapter.ClearBeforeFill = true;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -213,31 +211,56 @@
             this.dataGridViewTextBoxColumn17.HeaderText = "PAIS";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             // 
+            // dataTable1BindingSource
+            // 
+            this.dataTable1BindingSource.DataMember = "DataTable1";
+            this.dataTable1BindingSource.DataSource = this.bibliotecaDataSet;
+            // 
+            // bibliotecaDataSet
+            // 
+            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
+            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btUpdate
             // 
             this.btUpdate.CausesValidation = false;
-            this.btUpdate.Location = new System.Drawing.Point(807, 413);
+            this.btUpdate.Location = new System.Drawing.Point(809, 625);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(245, 62);
             this.btUpdate.TabIndex = 2;
             this.btUpdate.Text = "Alterar Usuário";
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // btDelete
             // 
             this.btDelete.CausesValidation = false;
-            this.btDelete.Location = new System.Drawing.Point(1089, 413);
+            this.btDelete.Location = new System.Drawing.Point(1091, 625);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(245, 62);
             this.btDelete.TabIndex = 3;
             this.btDelete.Text = "Deletar Usuário";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            // 
+            // idToModify
+            // 
+            this.idToModify.Location = new System.Drawing.Point(405, -8);
+            this.idToModify.Name = "idToModify";
+            this.idToModify.Size = new System.Drawing.Size(100, 20);
+            this.idToModify.TabIndex = 4;
+            this.idToModify.Visible = false;
+            // 
+            // dataTable1TableAdapter
+            // 
+            this.dataTable1TableAdapter.ClearBeforeFill = true;
             // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 515);
+            this.ClientSize = new System.Drawing.Size(1370, 701);
+            this.Controls.Add(this.idToModify);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.dataGridView1);
@@ -248,9 +271,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -279,9 +303,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lOGINDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sENHADataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private BibliotecaDataSet bibliotecaDataSet;
+        public BibliotecaDataSet bibliotecaDataSet;
         private System.Windows.Forms.BindingSource dataTable1BindingSource;
-        private BibliotecaDataSetTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
+        public BibliotecaDataSetTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
+        private System.Windows.Forms.Button btUpdate;
+        private System.Windows.Forms.Button btDelete;
+        private System.Windows.Forms.TextBox idToModify;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -299,7 +327,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.Button btUpdate;
-        private System.Windows.Forms.Button btDelete;
     }
 }
