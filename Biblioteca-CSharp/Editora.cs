@@ -108,5 +108,11 @@ namespace Biblioteca_CSharp
             UpdateEditora update = new UpdateEditora(this, Convert.ToInt32(idToModify.Text));
             update.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RelatorioEditora rel = new RelatorioEditora();
+            rel.Show();
+        }
     }
 }

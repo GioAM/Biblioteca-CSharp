@@ -162,7 +162,6 @@ namespace Biblioteca_CSharp
                         tbAno.Text = reader["ANO"].ToString();
                         tbEdicao.Text = reader["EDICAO"].ToString();
                         tbAutor.Text = reader["AUTOR"].ToString();
-                        cbEditora.SelectedValue = "ROCCO";
                     }
                     reader.Close();
                 }

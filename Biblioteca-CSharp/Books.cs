@@ -120,5 +120,11 @@ namespace Biblioteca_CSharp
                 MessageBox.Show("Nenhum livro selecionado. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RelatorioLivros rel = new RelatorioLivros();
+            rel.Show();
+        }
     }
 }

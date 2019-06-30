@@ -118,5 +118,11 @@ namespace Biblioteca_CSharp
                 MessageBox.Show("Nenhum usuário selecionado. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            RelatorioUsuarios rel = new RelatorioUsuarios();
+            rel.Show();
+        }
     }
 }

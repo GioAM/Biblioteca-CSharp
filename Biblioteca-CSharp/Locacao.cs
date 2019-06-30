@@ -31,7 +31,7 @@ namespace Biblioteca_CSharp
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(idToModify.Text))
+            if (!String.IsNullOrEmpty(idToModify.Text) && !String.IsNullOrEmpty(idToModifyItem.Text))
             {
                 DialogResult dialogResult = MessageBox.Show("Deseja excluir registro " + idToModify.Text + " ?", "Alerta", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -87,8 +87,8 @@ namespace Biblioteca_CSharp
                         if (bIsOperationOK == true)
                         {
                             MessageBox.Show("Registro Excluído!", "Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.dataTable4TableAdapter.Fill(this.bibliotecaDataSet.DataTable4);
                         }
+                        this.dataTable4TableAdapter.Fill(this.bibliotecaDataSet.DataTable4);
                     }
                 }
             }
@@ -105,8 +105,21 @@ namespace Biblioteca_CSharp
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            UpdateLocacao loc = new UpdateLocacao(this, Convert.ToInt32(idToModify.Text), Convert.ToInt32(idToModifyItem.Text));
-            loc.ShowDialog();
+            if (!String.IsNullOrEmpty(idToModify.Text) && !String.IsNullOrEmpty(idToModifyItem.Text))
+            {
+                UpdateLocacao loc = new UpdateLocacao(this, Convert.ToInt32(idToModify.Text), Convert.ToInt32(idToModifyItem.Text));
+                loc.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum usuário selecionado. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RelatorioLocacao rel = new RelatorioLocacao();
+            rel.Show();
         }
     }
 }

@@ -37,8 +37,10 @@ namespace Biblioteca_CSharp
 
             comm.Parameters.Add("@ID_USUARIO", System.Data.SqlDbType.Int);
             comm.Parameters["@ID_USUARIO"].Value = Convert.ToInt32(cbUsuario.SelectedValue);
+
             comm.Parameters.Add("@DATA", System.Data.SqlDbType.Date);
             comm.Parameters["@DATA"].Value = data.Value;
+
             comm.Parameters.Add("@VENCIMENTO", System.Data.SqlDbType.Date);
             comm.Parameters["@VENCIMENTO"].Value = vencimento.Value;
 

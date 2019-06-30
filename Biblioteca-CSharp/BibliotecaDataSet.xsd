@@ -698,6 +698,84 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable5TableAdapter" GeneratorDataComponentClassName="DataTable5TableAdapter" Name="DataTable5" UserDataComponentName="DataTable5TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BibliotecaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        USUARIO.NOME, DEVOLUCAO.ID, LOCACAO.ID AS LOCACAO, DEVOLUCAO.DATA
+FROM            USUARIO INNER JOIN
+                         DEVOLUCAO ON USUARIO.ID = DEVOLUCAO.ID INNER JOIN
+                         LOCACAO ON USUARIO.ID = LOCACAO.ID_USUARIO AND DEVOLUCAO.ID_LOCACAO = LOCACAO.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="NOME" DataSetColumn="NOME" />
+              <Mapping SourceColumn="LOCACAO" DataSetColumn="LOCACAO" />
+              <Mapping SourceColumn="DATA" DataSetColumn="DATA" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MultaTableAdapter" GeneratorDataComponentClassName="MultaTableAdapter" Name="Multa" UserDataComponentName="MultaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BibliotecaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MULTA.ID, MULTA.VALOR, MULTA.PAGO, USUARIO.NOME, MULTA.ID_DEVOLUCAO
+FROM            MULTA INNER JOIN
+                         USUARIO ON MULTA.ID_USUARIO = USUARIO.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="VALOR" DataSetColumn="VALOR" />
+              <Mapping SourceColumn="PAGO" DataSetColumn="PAGO" />
+              <Mapping SourceColumn="NOME" DataSetColumn="NOME" />
+              <Mapping SourceColumn="ID_DEVOLUCAO" DataSetColumn="ID_DEVOLUCAO" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="BibliotecaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        MULTA.ID, MULTA.VALOR, MULTA.PAGO, USUARIO.NOME, MULTA.ID_DEVOLUCAO
+FROM            MULTA INNER JOIN
+                         USUARIO ON MULTA.ID_USUARIO = USUARIO.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable6TableAdapter" GeneratorDataComponentClassName="DataTable6TableAdapter" Name="DataTable6" UserDataComponentName="DataTable6TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BibliotecaConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MULTA.ID, USUARIO.NOME, MULTA.VALOR, MULTA.PAGO, MULTA.ID_DEVOLUCAO, USUARIO.ID AS USUARIO_ID
+FROM            MULTA INNER JOIN
+                         USUARIO ON MULTA.ID_USUARIO = USUARIO.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="NOME" DataSetColumn="NOME" />
+              <Mapping SourceColumn="VALOR" DataSetColumn="VALOR" />
+              <Mapping SourceColumn="PAGO" DataSetColumn="PAGO" />
+              <Mapping SourceColumn="ID_DEVOLUCAO" DataSetColumn="ID_DEVOLUCAO" />
+              <Mapping SourceColumn="USUARIO_ID" DataSetColumn="USUARIO_ID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -706,7 +784,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
   <xs:element name="BibliotecaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BibliotecaDataSet" msprop:Generator_UserDSName="BibliotecaDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ENDERECO" msprop:Generator_TableClassName="ENDERECODataTable" msprop:Generator_TableVarName="tableENDERECO" msprop:Generator_TablePropName="ENDERECO" msprop:Generator_RowDeletingName="ENDERECORowDeleting" msprop:Generator_RowChangingName="ENDERECORowChanging" msprop:Generator_RowEvHandlerName="ENDERECORowChangeEventHandler" msprop:Generator_RowDeletedName="ENDERECORowDeleted" msprop:Generator_UserTableName="ENDERECO" msprop:Generator_RowChangedName="ENDERECORowChanged" msprop:Generator_RowEvArgName="ENDERECORowChangeEvent" msprop:Generator_RowClassName="ENDERECORow">
+        <xs:element name="ENDERECO" msprop:Generator_TableClassName="ENDERECODataTable" msprop:Generator_TableVarName="tableENDERECO" msprop:Generator_RowChangedName="ENDERECORowChanged" msprop:Generator_TablePropName="ENDERECO" msprop:Generator_RowDeletingName="ENDERECORowDeleting" msprop:Generator_RowChangingName="ENDERECORowChanging" msprop:Generator_RowEvHandlerName="ENDERECORowChangeEventHandler" msprop:Generator_RowDeletedName="ENDERECORowDeleted" msprop:Generator_RowClassName="ENDERECORow" msprop:Generator_UserTableName="ENDERECO" msprop:Generator_RowEvArgName="ENDERECORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -763,7 +841,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="USUARIO" msprop:Generator_TableClassName="USUARIODataTable" msprop:Generator_TableVarName="tableUSUARIO" msprop:Generator_TablePropName="USUARIO" msprop:Generator_RowDeletingName="USUARIORowDeleting" msprop:Generator_RowChangingName="USUARIORowChanging" msprop:Generator_RowEvHandlerName="USUARIORowChangeEventHandler" msprop:Generator_RowDeletedName="USUARIORowDeleted" msprop:Generator_UserTableName="USUARIO" msprop:Generator_RowChangedName="USUARIORowChanged" msprop:Generator_RowEvArgName="USUARIORowChangeEvent" msprop:Generator_RowClassName="USUARIORow">
+        <xs:element name="USUARIO" msprop:Generator_TableClassName="USUARIODataTable" msprop:Generator_TableVarName="tableUSUARIO" msprop:Generator_RowChangedName="USUARIORowChanged" msprop:Generator_TablePropName="USUARIO" msprop:Generator_RowDeletingName="USUARIORowDeleting" msprop:Generator_RowChangingName="USUARIORowChanging" msprop:Generator_RowEvHandlerName="USUARIORowChangeEventHandler" msprop:Generator_RowDeletedName="USUARIORowDeleted" msprop:Generator_RowClassName="USUARIORow" msprop:Generator_UserTableName="USUARIO" msprop:Generator_RowEvArgName="USUARIORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -817,7 +895,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DEVOLUCAO" msprop:Generator_TableClassName="DEVOLUCAODataTable" msprop:Generator_TableVarName="tableDEVOLUCAO" msprop:Generator_TablePropName="DEVOLUCAO" msprop:Generator_RowDeletingName="DEVOLUCAORowDeleting" msprop:Generator_RowChangingName="DEVOLUCAORowChanging" msprop:Generator_RowEvHandlerName="DEVOLUCAORowChangeEventHandler" msprop:Generator_RowDeletedName="DEVOLUCAORowDeleted" msprop:Generator_UserTableName="DEVOLUCAO" msprop:Generator_RowChangedName="DEVOLUCAORowChanged" msprop:Generator_RowEvArgName="DEVOLUCAORowChangeEvent" msprop:Generator_RowClassName="DEVOLUCAORow">
+        <xs:element name="DEVOLUCAO" msprop:Generator_TableClassName="DEVOLUCAODataTable" msprop:Generator_TableVarName="tableDEVOLUCAO" msprop:Generator_RowChangedName="DEVOLUCAORowChanged" msprop:Generator_TablePropName="DEVOLUCAO" msprop:Generator_RowDeletingName="DEVOLUCAORowDeleting" msprop:Generator_RowChangingName="DEVOLUCAORowChanging" msprop:Generator_RowEvHandlerName="DEVOLUCAORowChangeEventHandler" msprop:Generator_RowDeletedName="DEVOLUCAORowDeleted" msprop:Generator_RowClassName="DEVOLUCAORow" msprop:Generator_UserTableName="DEVOLUCAO" msprop:Generator_RowEvArgName="DEVOLUCAORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -826,7 +904,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LIVRO" msprop:Generator_TableClassName="LIVRODataTable" msprop:Generator_TableVarName="tableLIVRO" msprop:Generator_TablePropName="LIVRO" msprop:Generator_RowDeletingName="LIVRORowDeleting" msprop:Generator_RowChangingName="LIVRORowChanging" msprop:Generator_RowEvHandlerName="LIVRORowChangeEventHandler" msprop:Generator_RowDeletedName="LIVRORowDeleted" msprop:Generator_UserTableName="LIVRO" msprop:Generator_RowChangedName="LIVRORowChanged" msprop:Generator_RowEvArgName="LIVRORowChangeEvent" msprop:Generator_RowClassName="LIVRORow">
+        <xs:element name="LIVRO" msprop:Generator_TableClassName="LIVRODataTable" msprop:Generator_TableVarName="tableLIVRO" msprop:Generator_RowChangedName="LIVRORowChanged" msprop:Generator_TablePropName="LIVRO" msprop:Generator_RowDeletingName="LIVRORowDeleting" msprop:Generator_RowChangingName="LIVRORowChanging" msprop:Generator_RowEvHandlerName="LIVRORowChangeEventHandler" msprop:Generator_RowDeletedName="LIVRORowDeleted" msprop:Generator_RowClassName="LIVRORow" msprop:Generator_UserTableName="LIVRO" msprop:Generator_RowEvArgName="LIVRORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -856,7 +934,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LOCACAO" msprop:Generator_TableClassName="LOCACAODataTable" msprop:Generator_TableVarName="tableLOCACAO" msprop:Generator_TablePropName="LOCACAO" msprop:Generator_RowDeletingName="LOCACAORowDeleting" msprop:Generator_RowChangingName="LOCACAORowChanging" msprop:Generator_RowEvHandlerName="LOCACAORowChangeEventHandler" msprop:Generator_RowDeletedName="LOCACAORowDeleted" msprop:Generator_UserTableName="LOCACAO" msprop:Generator_RowChangedName="LOCACAORowChanged" msprop:Generator_RowEvArgName="LOCACAORowChangeEvent" msprop:Generator_RowClassName="LOCACAORow">
+        <xs:element name="LOCACAO" msprop:Generator_TableClassName="LOCACAODataTable" msprop:Generator_TableVarName="tableLOCACAO" msprop:Generator_RowChangedName="LOCACAORowChanged" msprop:Generator_TablePropName="LOCACAO" msprop:Generator_RowDeletingName="LOCACAORowDeleting" msprop:Generator_RowChangingName="LOCACAORowChanging" msprop:Generator_RowEvHandlerName="LOCACAORowChangeEventHandler" msprop:Generator_RowDeletedName="LOCACAORowDeleted" msprop:Generator_RowClassName="LOCACAORow" msprop:Generator_UserTableName="LOCACAO" msprop:Generator_RowEvArgName="LOCACAORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -866,7 +944,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MULTA" msprop:Generator_TableClassName="MULTADataTable" msprop:Generator_TableVarName="tableMULTA" msprop:Generator_TablePropName="MULTA" msprop:Generator_RowDeletingName="MULTARowDeleting" msprop:Generator_RowChangingName="MULTARowChanging" msprop:Generator_RowEvHandlerName="MULTARowChangeEventHandler" msprop:Generator_RowDeletedName="MULTARowDeleted" msprop:Generator_UserTableName="MULTA" msprop:Generator_RowChangedName="MULTARowChanged" msprop:Generator_RowEvArgName="MULTARowChangeEvent" msprop:Generator_RowClassName="MULTARow">
+        <xs:element name="MULTA" msprop:Generator_TableClassName="MULTADataTable" msprop:Generator_TableVarName="tableMULTA" msprop:Generator_RowChangedName="MULTARowChanged" msprop:Generator_TablePropName="MULTA" msprop:Generator_RowDeletingName="MULTARowDeleting" msprop:Generator_RowChangingName="MULTARowChanging" msprop:Generator_RowEvHandlerName="MULTARowChangeEventHandler" msprop:Generator_RowDeletedName="MULTARowDeleted" msprop:Generator_RowClassName="MULTARow" msprop:Generator_UserTableName="MULTA" msprop:Generator_RowEvArgName="MULTARowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -877,7 +955,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NOME" msprop:Generator_ColumnVarNameInTable="columnNOME" msprop:Generator_ColumnPropNameInRow="NOME" msprop:Generator_ColumnPropNameInTable="NOMEColumn" msprop:Generator_UserColumnName="NOME">
@@ -973,7 +1051,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent" msprop:Generator_RowClassName="DataTable2Row">
+        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_RowClassName="DataTable2Row" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -996,7 +1074,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="EDITORA" msprop:Generator_TableClassName="EDITORADataTable" msprop:Generator_TableVarName="tableEDITORA" msprop:Generator_TablePropName="EDITORA" msprop:Generator_RowDeletingName="EDITORARowDeleting" msprop:Generator_RowChangingName="EDITORARowChanging" msprop:Generator_RowEvHandlerName="EDITORARowChangeEventHandler" msprop:Generator_RowDeletedName="EDITORARowDeleted" msprop:Generator_UserTableName="EDITORA" msprop:Generator_RowChangedName="EDITORARowChanged" msprop:Generator_RowEvArgName="EDITORARowChangeEvent" msprop:Generator_RowClassName="EDITORARow">
+        <xs:element name="EDITORA" msprop:Generator_TableClassName="EDITORADataTable" msprop:Generator_TableVarName="tableEDITORA" msprop:Generator_RowChangedName="EDITORARowChanged" msprop:Generator_TablePropName="EDITORA" msprop:Generator_RowDeletingName="EDITORARowDeleting" msprop:Generator_RowChangingName="EDITORARowChanging" msprop:Generator_RowEvHandlerName="EDITORARowChangeEventHandler" msprop:Generator_RowDeletedName="EDITORARowDeleted" msprop:Generator_RowClassName="EDITORARow" msprop:Generator_UserTableName="EDITORA" msprop:Generator_RowEvArgName="EDITORARowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1038,7 +1116,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ITEM_LOCACAO" msprop:Generator_TableClassName="ITEM_LOCACAODataTable" msprop:Generator_TableVarName="tableITEM_LOCACAO" msprop:Generator_TablePropName="ITEM_LOCACAO" msprop:Generator_RowDeletingName="ITEM_LOCACAORowDeleting" msprop:Generator_RowChangingName="ITEM_LOCACAORowChanging" msprop:Generator_RowEvHandlerName="ITEM_LOCACAORowChangeEventHandler" msprop:Generator_RowDeletedName="ITEM_LOCACAORowDeleted" msprop:Generator_UserTableName="ITEM_LOCACAO" msprop:Generator_RowChangedName="ITEM_LOCACAORowChanged" msprop:Generator_RowEvArgName="ITEM_LOCACAORowChangeEvent" msprop:Generator_RowClassName="ITEM_LOCACAORow">
+        <xs:element name="ITEM_LOCACAO" msprop:Generator_TableClassName="ITEM_LOCACAODataTable" msprop:Generator_TableVarName="tableITEM_LOCACAO" msprop:Generator_RowChangedName="ITEM_LOCACAORowChanged" msprop:Generator_TablePropName="ITEM_LOCACAO" msprop:Generator_RowDeletingName="ITEM_LOCACAORowDeleting" msprop:Generator_RowChangingName="ITEM_LOCACAORowChanging" msprop:Generator_RowEvHandlerName="ITEM_LOCACAORowChangeEventHandler" msprop:Generator_RowDeletedName="ITEM_LOCACAORowDeleted" msprop:Generator_RowClassName="ITEM_LOCACAORow" msprop:Generator_UserTableName="ITEM_LOCACAO" msprop:Generator_RowEvArgName="ITEM_LOCACAORowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1047,7 +1125,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable3" msprop:Generator_TableClassName="DataTable3DataTable" msprop:Generator_TableVarName="tableDataTable3" msprop:Generator_TablePropName="DataTable3" msprop:Generator_RowDeletingName="DataTable3RowDeleting" msprop:Generator_RowChangingName="DataTable3RowChanging" msprop:Generator_RowEvHandlerName="DataTable3RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable3RowDeleted" msprop:Generator_UserTableName="DataTable3" msprop:Generator_RowChangedName="DataTable3RowChanged" msprop:Generator_RowEvArgName="DataTable3RowChangeEvent" msprop:Generator_RowClassName="DataTable3Row">
+        <xs:element name="DataTable3" msprop:Generator_TableClassName="DataTable3DataTable" msprop:Generator_TableVarName="tableDataTable3" msprop:Generator_RowChangedName="DataTable3RowChanged" msprop:Generator_TablePropName="DataTable3" msprop:Generator_RowDeletingName="DataTable3RowDeleting" msprop:Generator_RowChangingName="DataTable3RowChanging" msprop:Generator_RowEvHandlerName="DataTable3RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable3RowDeleted" msprop:Generator_RowClassName="DataTable3Row" msprop:Generator_UserTableName="DataTable3" msprop:Generator_RowEvArgName="DataTable3RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1083,7 +1161,7 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable4" msprop:Generator_TableClassName="DataTable4DataTable" msprop:Generator_TableVarName="tableDataTable4" msprop:Generator_RowChangedName="DataTable4RowChanged" msprop:Generator_TablePropName="DataTable4" msprop:Generator_RowDeletingName="DataTable4RowDeleting" msprop:Generator_RowChangingName="DataTable4RowChanging" msprop:Generator_RowEvHandlerName="DataTable4RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable4RowDeleted" msprop:Generator_RowClassName="DataTable4Row" msprop:Generator_UserTableName="DataTable4" msprop:Generator_RowEvArgName="DataTable4RowChangeEvent">
+        <xs:element name="DataTable4" msprop:Generator_TableClassName="DataTable4DataTable" msprop:Generator_TableVarName="tableDataTable4" msprop:Generator_TablePropName="DataTable4" msprop:Generator_RowDeletingName="DataTable4RowDeleting" msprop:Generator_RowChangingName="DataTable4RowChanging" msprop:Generator_RowEvHandlerName="DataTable4RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable4RowDeleted" msprop:Generator_UserTableName="DataTable4" msprop:Generator_RowChangedName="DataTable4RowChanged" msprop:Generator_RowEvArgName="DataTable4RowChangeEvent" msprop:Generator_RowClassName="DataTable4Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1104,6 +1182,57 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable5" msprop:Generator_TableClassName="DataTable5DataTable" msprop:Generator_TableVarName="tableDataTable5" msprop:Generator_TablePropName="DataTable5" msprop:Generator_RowDeletingName="DataTable5RowDeleting" msprop:Generator_RowChangingName="DataTable5RowChanging" msprop:Generator_RowEvHandlerName="DataTable5RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable5RowDeleted" msprop:Generator_UserTableName="DataTable5" msprop:Generator_RowChangedName="DataTable5RowChanged" msprop:Generator_RowEvArgName="DataTable5RowChangeEvent" msprop:Generator_RowClassName="DataTable5Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="NOME" msprop:Generator_ColumnVarNameInTable="columnNOME" msprop:Generator_ColumnPropNameInRow="NOME" msprop:Generator_ColumnPropNameInTable="NOMEColumn" msprop:Generator_UserColumnName="NOME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="254" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LOCACAO" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnLOCACAO" msprop:Generator_ColumnPropNameInRow="LOCACAO" msprop:Generator_ColumnPropNameInTable="LOCACAOColumn" msprop:Generator_UserColumnName="LOCACAO" type="xs:int" />
+              <xs:element name="DATA" msprop:Generator_ColumnVarNameInTable="columnDATA" msprop:Generator_ColumnPropNameInRow="DATA" msprop:Generator_ColumnPropNameInTable="DATAColumn" msprop:Generator_UserColumnName="DATA" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Multa" msprop:Generator_TableClassName="MultaDataTable" msprop:Generator_TableVarName="tableMulta" msprop:Generator_TablePropName="Multa" msprop:Generator_RowDeletingName="MultaRowDeleting" msprop:Generator_RowChangingName="MultaRowChanging" msprop:Generator_RowEvHandlerName="MultaRowChangeEventHandler" msprop:Generator_RowDeletedName="MultaRowDeleted" msprop:Generator_UserTableName="Multa" msprop:Generator_RowChangedName="MultaRowChanged" msprop:Generator_RowEvArgName="MultaRowChangeEvent" msprop:Generator_RowClassName="MultaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="VALOR" msprop:Generator_ColumnVarNameInTable="columnVALOR" msprop:Generator_ColumnPropNameInRow="VALOR" msprop:Generator_ColumnPropNameInTable="VALORColumn" msprop:Generator_UserColumnName="VALOR" type="xs:double" />
+              <xs:element name="PAGO" msprop:Generator_ColumnVarNameInTable="columnPAGO" msprop:Generator_ColumnPropNameInRow="PAGO" msprop:Generator_ColumnPropNameInTable="PAGOColumn" msprop:Generator_UserColumnName="PAGO" type="xs:int" />
+              <xs:element name="NOME" msprop:Generator_ColumnVarNameInTable="columnNOME" msprop:Generator_ColumnPropNameInRow="NOME" msprop:Generator_ColumnPropNameInTable="NOMEColumn" msprop:Generator_UserColumnName="NOME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="254" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_DEVOLUCAO" msprop:Generator_ColumnVarNameInTable="columnID_DEVOLUCAO" msprop:Generator_ColumnPropNameInRow="ID_DEVOLUCAO" msprop:Generator_ColumnPropNameInTable="ID_DEVOLUCAOColumn" msprop:Generator_UserColumnName="ID_DEVOLUCAO" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable6" msprop:Generator_TableClassName="DataTable6DataTable" msprop:Generator_TableVarName="tableDataTable6" msprop:Generator_TablePropName="DataTable6" msprop:Generator_RowDeletingName="DataTable6RowDeleting" msprop:Generator_RowChangingName="DataTable6RowChanging" msprop:Generator_RowEvHandlerName="DataTable6RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable6RowDeleted" msprop:Generator_UserTableName="DataTable6" msprop:Generator_RowChangedName="DataTable6RowChanged" msprop:Generator_RowEvArgName="DataTable6RowChangeEvent" msprop:Generator_RowClassName="DataTable6Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="NOME" msprop:Generator_ColumnVarNameInTable="columnNOME" msprop:Generator_ColumnPropNameInRow="NOME" msprop:Generator_ColumnPropNameInTable="NOMEColumn" msprop:Generator_UserColumnName="NOME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="254" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VALOR" msprop:Generator_ColumnVarNameInTable="columnVALOR" msprop:Generator_ColumnPropNameInRow="VALOR" msprop:Generator_ColumnPropNameInTable="VALORColumn" msprop:Generator_UserColumnName="VALOR" type="xs:double" />
+              <xs:element name="PAGO" msprop:Generator_ColumnVarNameInTable="columnPAGO" msprop:Generator_ColumnPropNameInRow="PAGO" msprop:Generator_ColumnPropNameInTable="PAGOColumn" msprop:Generator_UserColumnName="PAGO" type="xs:int" />
+              <xs:element name="ID_DEVOLUCAO" msprop:Generator_ColumnVarNameInTable="columnID_DEVOLUCAO" msprop:Generator_ColumnPropNameInRow="ID_DEVOLUCAO" msprop:Generator_ColumnPropNameInTable="ID_DEVOLUCAOColumn" msprop:Generator_UserColumnName="ID_DEVOLUCAO" type="xs:int" />
+              <xs:element name="USUARIO_ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUSUARIO_ID" msprop:Generator_ColumnPropNameInRow="USUARIO_ID" msprop:Generator_ColumnPropNameInTable="USUARIO_IDColumn" msprop:Generator_UserColumnName="USUARIO_ID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1157,19 +1286,31 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID</CommandText>
       <xs:selector xpath=".//mstns:DataTable4" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
+    <xs:unique name="DataTable5_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable5" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Multa_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Multa" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="DataTable6_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable6" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_ID_ENDERECO" msdata:parent="ENDERECO" msdata:child="USUARIO" msdata:parentkey="ID" msdata:childkey="ID_ENDERECO" msprop:Generator_UserChildTable="USUARIO" msprop:Generator_ChildPropName="GetUSUARIORows" msprop:Generator_UserRelationName="FK_ID_ENDERECO" msprop:Generator_ParentPropName="ENDERECORow" msprop:Generator_RelationVarName="relationFK_ID_ENDERECO" msprop:Generator_UserParentTable="ENDERECO" />
-      <msdata:Relationship name="FK_ID_LOCACAO_DEVOLUCAO" msdata:parent="LOCACAO" msdata:child="DEVOLUCAO" msdata:parentkey="ID" msdata:childkey="ID_LOCACAO" msprop:Generator_UserChildTable="DEVOLUCAO" msprop:Generator_ChildPropName="GetDEVOLUCAORows" msprop:Generator_UserRelationName="FK_ID_LOCACAO_DEVOLUCAO" msprop:Generator_RelationVarName="relationFK_ID_LOCACAO_DEVOLUCAO" msprop:Generator_UserParentTable="LOCACAO" msprop:Generator_ParentPropName="LOCACAORow" />
-      <msdata:Relationship name="FK_ID_USUARIO_LOCACAO" msdata:parent="USUARIO" msdata:child="LOCACAO" msdata:parentkey="ID" msdata:childkey="ID_USUARIO" msprop:Generator_UserChildTable="LOCACAO" msprop:Generator_ChildPropName="GetLOCACAORows" msprop:Generator_UserRelationName="FK_ID_USUARIO_LOCACAO" msprop:Generator_ParentPropName="USUARIORow" msprop:Generator_RelationVarName="relationFK_ID_USUARIO_LOCACAO" msprop:Generator_UserParentTable="USUARIO" />
-      <msdata:Relationship name="FK_ID_DEVOLUCAO" msdata:parent="DEVOLUCAO" msdata:child="MULTA" msdata:parentkey="ID" msdata:childkey="ID_DEVOLUCAO" msprop:Generator_UserChildTable="MULTA" msprop:Generator_ChildPropName="GetMULTARows" msprop:Generator_UserRelationName="FK_ID_DEVOLUCAO" msprop:Generator_ParentPropName="DEVOLUCAORow" msprop:Generator_RelationVarName="relationFK_ID_DEVOLUCAO" msprop:Generator_UserParentTable="DEVOLUCAO" />
-      <msdata:Relationship name="FK_ID_USUARIO_MULTA" msdata:parent="USUARIO" msdata:child="MULTA" msdata:parentkey="ID" msdata:childkey="ID_USUARIO" msprop:Generator_UserChildTable="MULTA" msprop:Generator_ChildPropName="GetMULTARows" msprop:Generator_UserRelationName="FK_ID_USUARIO_MULTA" msprop:Generator_ParentPropName="USUARIORow" msprop:Generator_RelationVarName="relationFK_ID_USUARIO_MULTA" msprop:Generator_UserParentTable="USUARIO" />
-      <msdata:Relationship name="FK_ID_ENDERECO1" msdata:parent="DataTable1" msdata:child="USUARIO" msdata:parentkey="ID" msdata:childkey="ID_ENDERECO" msprop:Generator_UserChildTable="USUARIO" msprop:Generator_ChildPropName="GetUSUARIORows" msprop:Generator_UserRelationName="FK_ID_ENDERECO1" msprop:Generator_RelationVarName="relationFK_ID_ENDERECO1" msprop:Generator_UserParentTable="DataTable1" msprop:Generator_ParentPropName="DataTable1Row" />
-      <msdata:Relationship name="FK_ID_EDITORA" msdata:parent="EDITORA" msdata:child="LIVRO" msdata:parentkey="ID" msdata:childkey="ID_EDITORA" msprop:Generator_UserChildTable="LIVRO" msprop:Generator_ChildPropName="GetLIVRORows" msprop:Generator_UserRelationName="FK_ID_EDITORA" msprop:Generator_RelationVarName="relationFK_ID_EDITORA" msprop:Generator_UserParentTable="EDITORA" msprop:Generator_ParentPropName="EDITORARow" />
-      <msdata:Relationship name="FK_ID_LOCACAO_ITEM" msdata:parent="LOCACAO" msdata:child="ITEM_LOCACAO" msdata:parentkey="ID" msdata:childkey="ID_LOCACAO" msprop:Generator_UserChildTable="ITEM_LOCACAO" msprop:Generator_ChildPropName="GetITEM_LOCACAORows" msprop:Generator_UserRelationName="FK_ID_LOCACAO_ITEM" msprop:Generator_ParentPropName="LOCACAORow" msprop:Generator_RelationVarName="relationFK_ID_LOCACAO_ITEM" msprop:Generator_UserParentTable="LOCACAO" />
-      <msdata:Relationship name="FK_ID_EDITORA1" msdata:parent="DataTable3" msdata:child="LIVRO" msdata:parentkey="ID" msdata:childkey="ID_EDITORA" msprop:Generator_UserChildTable="LIVRO" msprop:Generator_ChildPropName="GetLIVRORows" msprop:Generator_UserRelationName="FK_ID_EDITORA1" msprop:Generator_RelationVarName="relationFK_ID_EDITORA1" msprop:Generator_UserParentTable="DataTable3" msprop:Generator_ParentPropName="DataTable3Row" />
-      <msdata:Relationship name="FK_ID_LOCACAO_ITEM1" msdata:parent="LOCACAO" msdata:child="DataTable4" msdata:parentkey="ID" msdata:childkey="ID_LOCACAO" msprop:Generator_UserChildTable="DataTable4" msprop:Generator_ChildPropName="GetDataTable4Rows" msprop:Generator_UserRelationName="FK_ID_LOCACAO_ITEM1" msprop:Generator_RelationVarName="relationFK_ID_LOCACAO_ITEM1" msprop:Generator_UserParentTable="LOCACAO" msprop:Generator_ParentPropName="LOCACAORow" />
+      <msdata:Relationship name="FK_ID_ENDERECO" msdata:parent="ENDERECO" msdata:child="USUARIO" msdata:parentkey="ID" msdata:childkey="ID_ENDERECO" msprop:Generator_UserChildTable="USUARIO" msprop:Generator_ChildPropName="GetUSUARIORows" msprop:Generator_UserRelationName="FK_ID_ENDERECO" msprop:Generator_RelationVarName="relationFK_ID_ENDERECO" msprop:Generator_UserParentTable="ENDERECO" msprop:Generator_ParentPropName="ENDERECORow" />
+      <msdata:Relationship name="FK_ID_LOCACAO_DEVOLUCAO" msdata:parent="LOCACAO" msdata:child="DEVOLUCAO" msdata:parentkey="ID" msdata:childkey="ID_LOCACAO" msprop:Generator_UserChildTable="DEVOLUCAO" msprop:Generator_ChildPropName="GetDEVOLUCAORows" msprop:Generator_UserRelationName="FK_ID_LOCACAO_DEVOLUCAO" msprop:Generator_ParentPropName="LOCACAORow" msprop:Generator_RelationVarName="relationFK_ID_LOCACAO_DEVOLUCAO" msprop:Generator_UserParentTable="LOCACAO" />
+      <msdata:Relationship name="FK_ID_USUARIO_LOCACAO" msdata:parent="USUARIO" msdata:child="LOCACAO" msdata:parentkey="ID" msdata:childkey="ID_USUARIO" msprop:Generator_UserChildTable="LOCACAO" msprop:Generator_ChildPropName="GetLOCACAORows" msprop:Generator_UserRelationName="FK_ID_USUARIO_LOCACAO" msprop:Generator_RelationVarName="relationFK_ID_USUARIO_LOCACAO" msprop:Generator_UserParentTable="USUARIO" msprop:Generator_ParentPropName="USUARIORow" />
+      <msdata:Relationship name="FK_ID_DEVOLUCAO" msdata:parent="DEVOLUCAO" msdata:child="MULTA" msdata:parentkey="ID" msdata:childkey="ID_DEVOLUCAO" msprop:Generator_UserChildTable="MULTA" msprop:Generator_ChildPropName="GetMULTARows" msprop:Generator_UserRelationName="FK_ID_DEVOLUCAO" msprop:Generator_RelationVarName="relationFK_ID_DEVOLUCAO" msprop:Generator_UserParentTable="DEVOLUCAO" msprop:Generator_ParentPropName="DEVOLUCAORow" />
+      <msdata:Relationship name="FK_ID_USUARIO_MULTA" msdata:parent="USUARIO" msdata:child="MULTA" msdata:parentkey="ID" msdata:childkey="ID_USUARIO" msprop:Generator_UserChildTable="MULTA" msprop:Generator_ChildPropName="GetMULTARows" msprop:Generator_UserRelationName="FK_ID_USUARIO_MULTA" msprop:Generator_RelationVarName="relationFK_ID_USUARIO_MULTA" msprop:Generator_UserParentTable="USUARIO" msprop:Generator_ParentPropName="USUARIORow" />
+      <msdata:Relationship name="FK_ID_ENDERECO1" msdata:parent="DataTable1" msdata:child="USUARIO" msdata:parentkey="ID" msdata:childkey="ID_ENDERECO" msprop:Generator_UserChildTable="USUARIO" msprop:Generator_ChildPropName="GetUSUARIORows" msprop:Generator_UserRelationName="FK_ID_ENDERECO1" msprop:Generator_ParentPropName="DataTable1Row" msprop:Generator_RelationVarName="relationFK_ID_ENDERECO1" msprop:Generator_UserParentTable="DataTable1" />
+      <msdata:Relationship name="FK_ID_EDITORA" msdata:parent="EDITORA" msdata:child="LIVRO" msdata:parentkey="ID" msdata:childkey="ID_EDITORA" msprop:Generator_UserChildTable="LIVRO" msprop:Generator_ChildPropName="GetLIVRORows" msprop:Generator_UserRelationName="FK_ID_EDITORA" msprop:Generator_ParentPropName="EDITORARow" msprop:Generator_RelationVarName="relationFK_ID_EDITORA" msprop:Generator_UserParentTable="EDITORA" />
+      <msdata:Relationship name="FK_ID_LOCACAO_ITEM" msdata:parent="LOCACAO" msdata:child="ITEM_LOCACAO" msdata:parentkey="ID" msdata:childkey="ID_LOCACAO" msprop:Generator_UserChildTable="ITEM_LOCACAO" msprop:Generator_ChildPropName="GetITEM_LOCACAORows" msprop:Generator_UserRelationName="FK_ID_LOCACAO_ITEM" msprop:Generator_RelationVarName="relationFK_ID_LOCACAO_ITEM" msprop:Generator_UserParentTable="LOCACAO" msprop:Generator_ParentPropName="LOCACAORow" />
+      <msdata:Relationship name="FK_ID_EDITORA1" msdata:parent="DataTable3" msdata:child="LIVRO" msdata:parentkey="ID" msdata:childkey="ID_EDITORA" msprop:Generator_UserChildTable="LIVRO" msprop:Generator_ChildPropName="GetLIVRORows" msprop:Generator_UserRelationName="FK_ID_EDITORA1" msprop:Generator_ParentPropName="DataTable3Row" msprop:Generator_RelationVarName="relationFK_ID_EDITORA1" msprop:Generator_UserParentTable="DataTable3" />
+      <msdata:Relationship name="FK_ID_LOCACAO_ITEM1" msdata:parent="LOCACAO" msdata:child="DataTable4" msdata:parentkey="ID" msdata:childkey="ID_LOCACAO" msprop:Generator_UserChildTable="DataTable4" msprop:Generator_ChildPropName="GetDataTable4Rows" msprop:Generator_UserRelationName="FK_ID_LOCACAO_ITEM1" msprop:Generator_ParentPropName="LOCACAORow" msprop:Generator_RelationVarName="relationFK_ID_LOCACAO_ITEM1" msprop:Generator_UserParentTable="LOCACAO" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

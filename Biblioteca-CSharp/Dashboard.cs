@@ -47,5 +47,15 @@ namespace Biblioteca_CSharp
             Locacao locacao = new Locacao();
             locacao.Show();
         }
+
+        private void btDevolucao_Click(object sender, EventArgs e)
+        {
+            Devolucao dev = new Devolucao();
+            dev.Show();
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

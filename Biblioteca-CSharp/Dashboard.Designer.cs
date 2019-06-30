@@ -43,8 +43,6 @@
             this.btDevolucao = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btMultas = new System.Windows.Forms.Button();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -52,7 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // btUsuario
@@ -177,6 +174,7 @@
             this.btDevolucao.TabIndex = 12;
             this.btDevolucao.Text = "Devolução";
             this.btDevolucao.UseVisualStyleBackColor = true;
+            this.btDevolucao.Click += new System.EventHandler(this.btDevolucao_Click);
             // 
             // pictureBox7
             // 
@@ -198,33 +196,11 @@
             this.btMultas.Text = "Multas";
             this.btMultas.UseVisualStyleBackColor = true;
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(53, 569);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox8.TabIndex = 17;
-            this.pictureBox8.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(139, 559);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(248, 74);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Relatórios";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 651);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(437, 566);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.btMultas);
             this.Controls.Add(this.pictureBox6);
@@ -249,7 +225,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +246,5 @@
         private System.Windows.Forms.Button btDevolucao;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button btMultas;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Button button1;
     }
 }

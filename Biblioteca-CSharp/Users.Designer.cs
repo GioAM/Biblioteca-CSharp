@@ -55,6 +55,7 @@
             this.btDelete = new System.Windows.Forms.Button();
             this.idToModify = new System.Windows.Forms.TextBox();
             this.dataTable1TableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DataTable1TableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
@@ -255,11 +256,23 @@
             // 
             this.dataTable1TableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.CausesValidation = false;
+            this.button1.Location = new System.Drawing.Point(12, 625);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(245, 62);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Relatórios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 701);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.idToModify);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btUpdate);
@@ -327,5 +340,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.Button button1;
     }
 }

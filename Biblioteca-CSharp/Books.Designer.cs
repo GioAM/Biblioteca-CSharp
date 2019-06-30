@@ -43,6 +43,7 @@
             this.dataTable3BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
             this.dataTable3TableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DataTable3TableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable3BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
@@ -158,11 +159,23 @@
             // 
             this.dataTable3TableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.CausesValidation = false;
+            this.button1.Location = new System.Drawing.Point(12, 627);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(245, 62);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Relatórios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 701);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.idToModify);
             this.Controls.Add(this.btDelete);
@@ -195,5 +208,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn eDICAODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aNODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eDITORADataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button1;
     }
 }

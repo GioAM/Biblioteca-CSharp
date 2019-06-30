@@ -43,6 +43,7 @@
             this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
             this.eDITORATableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.EDITORATableAdapter();
             this.idToModify = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eDITORABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
@@ -159,11 +160,23 @@
             this.idToModify.TabIndex = 8;
             this.idToModify.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.CausesValidation = false;
+            this.button1.Location = new System.Drawing.Point(12, 627);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(245, 62);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Relatórios";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Editora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 701);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.idToModify);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btDelete);
@@ -197,5 +210,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cNPJDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tELEFONEDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox idToModify;
+        private System.Windows.Forms.Button button1;
     }
 }
