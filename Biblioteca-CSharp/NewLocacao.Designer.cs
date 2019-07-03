@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbUsuario = new System.Windows.Forms.ComboBox();
+            this.uSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
             this.cbLivro = new System.Windows.Forms.ComboBox();
+            this.lIVROBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vencimento = new System.Windows.Forms.DateTimePicker();
             this.data = new System.Windows.Forms.DateTimePicker();
             this.lbAno = new System.Windows.Forms.Label();
@@ -39,15 +42,15 @@
             this.lbEdicao = new System.Windows.Forms.Label();
             this.lbNome = new System.Windows.Forms.Label();
             this.btSalvar = new System.Windows.Forms.Button();
-            this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
-            this.uSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uSUARIOTableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.USUARIOTableAdapter();
-            this.lIVROBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lIVROTableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.LIVROTableAdapter();
+            this.fillBy4ToolStrip = new System.Windows.Forms.ToolStrip();
+            this.fillBy4ToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIVROBindingSource)).BeginInit();
+            this.fillBy4ToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -70,13 +73,21 @@
             // cbUsuario
             // 
             this.cbUsuario.DataSource = this.uSUARIOBindingSource;
-            this.cbUsuario.DisplayMember = "NOME";
             this.cbUsuario.FormattingEnabled = true;
             this.cbUsuario.Location = new System.Drawing.Point(75, 31);
             this.cbUsuario.Name = "cbUsuario";
             this.cbUsuario.Size = new System.Drawing.Size(121, 21);
             this.cbUsuario.TabIndex = 16;
-            this.cbUsuario.ValueMember = "ID";
+            // 
+            // uSUARIOBindingSource
+            // 
+            this.uSUARIOBindingSource.DataMember = "USUARIO";
+            this.uSUARIOBindingSource.DataSource = this.bibliotecaDataSet;
+            // 
+            // bibliotecaDataSet
+            // 
+            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
+            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cbLivro
             // 
@@ -88,6 +99,11 @@
             this.cbLivro.Size = new System.Drawing.Size(121, 21);
             this.cbLivro.TabIndex = 15;
             this.cbLivro.ValueMember = "ID";
+            // 
+            // lIVROBindingSource
+            // 
+            this.lIVROBindingSource.DataMember = "LIVRO";
+            this.lIVROBindingSource.DataSource = this.bibliotecaDataSet;
             // 
             // vencimento
             // 
@@ -153,34 +169,38 @@
             this.btSalvar.UseVisualStyleBackColor = true;
             this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
             // 
-            // bibliotecaDataSet
-            // 
-            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
-            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // uSUARIOBindingSource
-            // 
-            this.uSUARIOBindingSource.DataMember = "USUARIO";
-            this.uSUARIOBindingSource.DataSource = this.bibliotecaDataSet;
-            // 
             // uSUARIOTableAdapter
             // 
             this.uSUARIOTableAdapter.ClearBeforeFill = true;
             // 
-            // lIVROBindingSource
-            // 
-            this.lIVROBindingSource.DataMember = "LIVRO";
-            this.lIVROBindingSource.DataSource = this.bibliotecaDataSet;
-            // 
             // lIVROTableAdapter
             // 
             this.lIVROTableAdapter.ClearBeforeFill = true;
+            // 
+            // fillBy4ToolStrip
+            // 
+            this.fillBy4ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillBy4ToolStripButton});
+            this.fillBy4ToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.fillBy4ToolStrip.Name = "fillBy4ToolStrip";
+            this.fillBy4ToolStrip.Size = new System.Drawing.Size(468, 25);
+            this.fillBy4ToolStrip.TabIndex = 4;
+            this.fillBy4ToolStrip.Text = "fillBy4ToolStrip";
+            // 
+            // fillBy4ToolStripButton
+            // 
+            this.fillBy4ToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillBy4ToolStripButton.Name = "fillBy4ToolStripButton";
+            this.fillBy4ToolStripButton.Size = new System.Drawing.Size(45, 22);
+            this.fillBy4ToolStripButton.Text = "FillBy4";
+            this.fillBy4ToolStripButton.Click += new System.EventHandler(this.fillBy4ToolStripButton_Click);
             // 
             // NewLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 163);
+            this.Controls.Add(this.fillBy4ToolStrip);
             this.Controls.Add(this.btSalvar);
             this.Controls.Add(this.groupBox1);
             this.Name = "NewLocacao";
@@ -188,10 +208,13 @@
             this.Load += new System.EventHandler(this.NewLocacao_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIVROBindingSource)).EndInit();
+            this.fillBy4ToolStrip.ResumeLayout(false);
+            this.fillBy4ToolStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -211,5 +234,7 @@
         private BibliotecaDataSetTableAdapters.USUARIOTableAdapter uSUARIOTableAdapter;
         private System.Windows.Forms.BindingSource lIVROBindingSource;
         private BibliotecaDataSetTableAdapters.LIVROTableAdapter lIVROTableAdapter;
+        private System.Windows.Forms.ToolStrip fillBy4ToolStrip;
+        private System.Windows.Forms.ToolStripButton fillBy4ToolStripButton;
     }
 }

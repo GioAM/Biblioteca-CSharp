@@ -45,6 +45,7 @@
             this.dataTable6TableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DataTable6TableAdapter();
             this.idUser = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.tbMulta = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable6BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
@@ -57,8 +58,9 @@
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(245, 62);
             this.btDelete.TabIndex = 12;
-            this.btDelete.Text = "Excluir Locação";
+            this.btDelete.Text = "Excluir Multa";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // btUpdate
             // 
@@ -67,8 +69,9 @@
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(245, 62);
             this.btUpdate.TabIndex = 11;
-            this.btUpdate.Text = "Alterar Locação";
+            this.btUpdate.Text = "Alterar Multa";
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // dataGridView1
             // 
@@ -86,6 +89,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(645, 609);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // iDDataGridViewTextBoxColumn
@@ -143,7 +147,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(245, 62);
             this.button1.TabIndex = 14;
-            this.button1.Text = "Pagar Locação";
+            this.button1.Text = "Pagar Multa";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -178,12 +182,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // tbMulta
+            // 
+            this.tbMulta.Location = new System.Drawing.Point(64, 487);
+            this.tbMulta.Name = "tbMulta";
+            this.tbMulta.Size = new System.Drawing.Size(100, 20);
+            this.tbMulta.TabIndex = 18;
+            this.tbMulta.Visible = false;
+            // 
             // Multa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1370, 726);
+            this.Controls.Add(this.tbMulta);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.idUser);
             this.Controls.Add(this.idToModify);
@@ -210,9 +223,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox idToModify;
-        private BibliotecaDataSet bibliotecaDataSet;
+        public BibliotecaDataSet bibliotecaDataSet;
         private System.Windows.Forms.BindingSource dataTable6BindingSource;
-        private BibliotecaDataSetTableAdapters.DataTable6TableAdapter dataTable6TableAdapter;
+        public BibliotecaDataSetTableAdapters.DataTable6TableAdapter dataTable6TableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nOMEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vALORDataGridViewTextBoxColumn;
@@ -221,5 +234,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uSUARIOIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox idUser;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox tbMulta;
     }
 }

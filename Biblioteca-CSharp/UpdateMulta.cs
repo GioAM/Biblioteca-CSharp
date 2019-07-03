@@ -11,61 +11,48 @@ using System.Data.SqlClient;
 
 namespace Biblioteca_CSharp
 {
-    public partial class UpdateLocacao : Form
+    public partial class UpdateMulta : Form
     {
-        private Locacao locacao { get; set; }
-        private int idLocacao { get; set; }
-        private int idItemLocacao { get; set; }
-        public UpdateLocacao(Locacao locacao, int idLocacao, int idItemLocacao)
+        private int id;
+        private int idUsuario;
+        private Multa multa;
+        public UpdateMulta(int id, int idUsuario, Multa multa)
         {
-            this.locacao = locacao;
-            this.idItemLocacao = idItemLocacao;
-            this.idLocacao = idLocacao;
             InitializeComponent();
+            this.multa = multa;
+            this.id = id;
+            this.idUsuario = idUsuario;
             getData();
-        }
-
-        private void UpdateLocacao_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'bibliotecaDataSet.LIVRO' table. You can move, or remove it, as needed.
-            this.lIVROTableAdapter.Fill(this.bibliotecaDataSet.LIVRO);
-            // TODO: This line of code loads data into the 'bibliotecaDataSet.USUARIO' table. You can move, or remove it, as needed.
-            this.uSUARIOTableAdapter.Fill(this.bibliotecaDataSet.USUARIO);
-
         }
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
             SqlConnection conn;
-            SqlCommand comm, commItem;
+            SqlCommand comm;
             bool bIsOperationOK = true;
 
             string connectionString = Properties.Settings.Default.BibliotecaConnectionString;
 
             conn = new SqlConnection(connectionString);
 
-            comm = new SqlCommand("UPDATE LOCACAO SET DATA=@DATA, VENCIMENTO=@VENCIMENTO, ID_USUARIO=@ID_USUARIO " +
+            comm = new SqlCommand(
+                "UPDATE MULTA SET ID_USUARIO=@ID_USUARIO, ID_DEVOLUCAO=@ID_DEVOLUCAO, VALOR=@VALOR, PAGO=@PAGO " +
                     "WHERE ID = @ID", conn);
-            commItem = new SqlCommand("UPDATE ITEM_LOCACAO SET ID_LIVRO=@ID_LIVRO " +
-                    "WHERE ID = @ID", conn);
-
-            commItem.Parameters.Add("@ID", System.Data.SqlDbType.Int);
-            commItem.Parameters["@ID"].Value = idItemLocacao;
-
-            commItem.Parameters.Add("@ID_LIVRO", System.Data.SqlDbType.Int);
-            commItem.Parameters["@ID_LIVRO"].Value = Convert.ToInt32(cbLivro.SelectedValue);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID"].Value = idLocacao;
-
-            comm.Parameters.Add("@DATA", System.Data.SqlDbType.Date);
-            comm.Parameters["@DATA"].Value = data.Value;
-
-            comm.Parameters.Add("@VENCIMENTO", System.Data.SqlDbType.Date);
-            comm.Parameters["@VENCIMENTO"].Value = vencimento.Value;
+            comm.Parameters["@ID"].Value = id;
 
             comm.Parameters.Add("@ID_USUARIO", System.Data.SqlDbType.Int);
             comm.Parameters["@ID_USUARIO"].Value = Convert.ToInt32(cbUsuario.SelectedValue);
+
+            comm.Parameters.Add("@ID_DEVOLUCAO", System.Data.SqlDbType.Int);
+            comm.Parameters["@ID_DEVOLUCAO"].Value = Convert.ToInt32(cbDevolucao.SelectedValue);
+
+            comm.Parameters.Add("@VALOR", System.Data.SqlDbType.Float);
+            comm.Parameters["@VALOR"].Value = Convert.ToDouble(valor.Text);
+
+            comm.Parameters.Add("@PAGO", System.Data.SqlDbType.Int);
+            comm.Parameters["@PAGO"].Value = Convert.ToInt32(cbPago.SelectedValue);
 
             try
             {
@@ -86,7 +73,6 @@ namespace Biblioteca_CSharp
                 {
                     // Executa o Commando SQL
                     comm.ExecuteNonQuery();
-                    commItem.ExecuteNonQuery();
                 }
                 catch (Exception error)
                 {
@@ -104,14 +90,15 @@ namespace Biblioteca_CSharp
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Registro Cadastrado!", "Banco de Dados",MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    locacao.dataTable4TableAdapter.Fill(locacao.bibliotecaDataSet.DataTable4);
+                    MessageBox.Show("Registro Cadastrado!",
+                        "Banco de Dados",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
+                multa.dataTable6TableAdapter.Fill(multa.bibliotecaDataSet.DataTable6);
             }
         }
-        private void getData()
+        public void getData()
         {
             SqlConnection conn;
             SqlCommand comm;
@@ -120,10 +107,12 @@ namespace Biblioteca_CSharp
 
             conn = new SqlConnection(connectionString);
 
-            comm = new SqlCommand("SELECT * FROM LOCACAO WHERE ID=@ID", conn);
+            comm = new SqlCommand(
+                "SELECT * FROM MULTA WHERE ID=@ID", conn);
 
+            // Recupera o registro do banco de dados a partir da chave primária 'Codigo'
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID"].Value = idLocacao;
+            comm.Parameters["@ID"].Value = id;
 
             try
             {
@@ -143,8 +132,7 @@ namespace Biblioteca_CSharp
                     reader = comm.ExecuteReader();
                     if (reader.Read())
                     {
-                        data.Value = Convert.ToDateTime(reader["DATA"].ToString());
-                        vencimento.Value = Convert.ToDateTime(reader["VENCIMENTO"].ToString());
+                        valor.Text= reader["VALOR"].ToString();
                     }
                     reader.Close();
                 }
@@ -158,6 +146,14 @@ namespace Biblioteca_CSharp
             {
                 conn.Close();
             }
+        }
+
+        private void UpdateMulta_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'bibliotecaDataSet.DEVOLUCAO' table. You can move, or remove it, as needed.
+            this.dEVOLUCAOTableAdapter.Fill(this.bibliotecaDataSet.DEVOLUCAO);
+            // TODO: This line of code loads data into the 'bibliotecaDataSet.USUARIO' table. You can move, or remove it, as needed.
+            this.uSUARIOTableAdapter.Fill(this.bibliotecaDataSet.USUARIO);
 
         }
     }

@@ -46,7 +46,7 @@ namespace Biblioteca_CSharp
             }
             else
             {
-                MessageBox.Show("Nenhum usuário selecionado. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum livro selecionado. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
             }
 
         }

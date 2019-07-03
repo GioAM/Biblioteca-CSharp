@@ -195,6 +195,7 @@
             this.btMultas.TabIndex = 14;
             this.btMultas.Text = "Multas";
             this.btMultas.UseVisualStyleBackColor = true;
+            this.btMultas.Click += new System.EventHandler(this.btMultas_Click);
             // 
             // Dashboard
             // 

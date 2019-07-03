@@ -16,8 +16,11 @@ namespace Biblioteca_CSharp
         private Locacao locacao;
         public NewLocacao(Locacao locacao)
         {
+            DateTime today = DateTime.Today;
             this.locacao = locacao;
             InitializeComponent();
+            vencimento.Value = today;
+            data.Value = today;
         }
         private void btSalvar_Click(object sender, EventArgs e)
         {
@@ -141,6 +144,45 @@ namespace Biblioteca_CSharp
             this.lIVROTableAdapter.Fill(this.bibliotecaDataSet.LIVRO);
             // TODO: This line of code loads data into the 'bibliotecaDataSet.USUARIO' table. You can move, or remove it, as needed.
             this.uSUARIOTableAdapter.Fill(this.bibliotecaDataSet.USUARIO);
+
+        }
+
+        private void fillBy2ToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.uSUARIOTableAdapter.FillBy2(this.bibliotecaDataSet.USUARIO);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void fillBy3ToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.uSUARIOTableAdapter.FillBy3(this.bibliotecaDataSet.USUARIO);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void fillBy4ToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.uSUARIOTableAdapter.FillBy4(this.bibliotecaDataSet.USUARIO);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
 
         }
     }

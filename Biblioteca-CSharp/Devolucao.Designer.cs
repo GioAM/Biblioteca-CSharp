@@ -32,21 +32,19 @@
             this.btDelete = new System.Windows.Forms.Button();
             this.btUpdate = new System.Windows.Forms.Button();
             this.btInsert = new System.Windows.Forms.Button();
-            this.dataTable5BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
-            this.dataTable5TableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DataTable5TableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nOMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dATADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataTable5BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.iDLOCACAODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataTable5BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
             this.idToModify = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataTable5TableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DataTable5TableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable5BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable5BindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btDelete
@@ -82,20 +80,6 @@
             this.btInsert.UseVisualStyleBackColor = true;
             this.btInsert.Click += new System.EventHandler(this.btInsert_Click);
             // 
-            // dataTable5BindingSource
-            // 
-            this.dataTable5BindingSource.DataMember = "DataTable5";
-            this.dataTable5BindingSource.DataSource = this.bibliotecaDataSet;
-            // 
-            // bibliotecaDataSet
-            // 
-            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
-            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataTable5TableAdapter
-            // 
-            this.dataTable5TableAdapter.ClearBeforeFill = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
@@ -104,9 +88,9 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
             this.nOMEDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1,
-            this.dATADataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.dataTable5BindingSource1;
+            this.dATADataGridViewTextBoxColumn,
+            this.iDLOCACAODataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.dataTable5BindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(512, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(443, 595);
@@ -127,23 +111,27 @@
             this.nOMEDataGridViewTextBoxColumn.HeaderText = "NOME";
             this.nOMEDataGridViewTextBoxColumn.Name = "nOMEDataGridViewTextBoxColumn";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "LOCACAO";
-            this.dataGridViewTextBoxColumn1.HeaderText = "LOCACAO";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // dATADataGridViewTextBoxColumn
             // 
             this.dATADataGridViewTextBoxColumn.DataPropertyName = "DATA";
             this.dATADataGridViewTextBoxColumn.HeaderText = "DATA";
             this.dATADataGridViewTextBoxColumn.Name = "dATADataGridViewTextBoxColumn";
             // 
-            // dataTable5BindingSource1
+            // iDLOCACAODataGridViewTextBoxColumn
             // 
-            this.dataTable5BindingSource1.DataMember = "DataTable5";
-            this.dataTable5BindingSource1.DataSource = this.bibliotecaDataSet;
+            this.iDLOCACAODataGridViewTextBoxColumn.DataPropertyName = "ID_LOCACAO";
+            this.iDLOCACAODataGridViewTextBoxColumn.HeaderText = "ID_LOCACAO";
+            this.iDLOCACAODataGridViewTextBoxColumn.Name = "iDLOCACAODataGridViewTextBoxColumn";
+            // 
+            // dataTable5BindingSource
+            // 
+            this.dataTable5BindingSource.DataMember = "DataTable5";
+            this.dataTable5BindingSource.DataSource = this.bibliotecaDataSet;
+            // 
+            // bibliotecaDataSet
+            // 
+            this.bibliotecaDataSet.DataSetName = "BibliotecaDataSet";
+            this.bibliotecaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // idToModify
             // 
@@ -152,6 +140,7 @@
             this.idToModify.Size = new System.Drawing.Size(100, 20);
             this.idToModify.TabIndex = 14;
             this.idToModify.Visible = false;
+            this.idToModify.TextChanged += new System.EventHandler(this.idToModify_TextChanged);
             // 
             // button1
             // 
@@ -163,6 +152,10 @@
             this.button1.Text = "Relatórios";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataTable5TableAdapter
+            // 
+            this.dataTable5TableAdapter.ClearBeforeFill = true;
             // 
             // Devolucao
             // 
@@ -180,10 +173,9 @@
             this.Text = "Devolucao";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Devolucao_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable5BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable5BindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,16 +188,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lOCACAODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vALORDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uSUARIODataGridViewTextBoxColumn;
-        public BibliotecaDataSet bibliotecaDataSet;
-        public System.Windows.Forms.BindingSource dataTable5BindingSource;
-        public BibliotecaDataSetTableAdapters.DataTable5TableAdapter dataTable5TableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nOMEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dATADataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource dataTable5BindingSource1;
         private System.Windows.Forms.TextBox idToModify;
         private System.Windows.Forms.Button button1;
+        public BibliotecaDataSet bibliotecaDataSet;
+        private System.Windows.Forms.BindingSource dataTable5BindingSource;
+        public BibliotecaDataSetTableAdapters.DataTable5TableAdapter dataTable5TableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nOMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dATADataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDLOCACAODataGridViewTextBoxColumn;
     }
 }

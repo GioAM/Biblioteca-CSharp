@@ -22,6 +22,7 @@ namespace Biblioteca_CSharp
             InitializeComponent();
             this.devolucaoForm = devolucaoForm;
             multaTotal = 0;
+            devolucao.Value = DateTime.Today;
         }
 
         private void NewDevolucao_Load(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace Biblioteca_CSharp
                 "SELECT * FROM LOCACAO WHERE ID=@ID", conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID"].Value = cbLocacao.SelectedValue;
+            comm.Parameters["@ID"].Value = Convert.ToInt32(cbLocacao.SelectedValue);
 
             try
             {
@@ -69,7 +70,7 @@ namespace Biblioteca_CSharp
                     reader = comm.ExecuteReader();
                     if (reader.Read())
                     {
-                        validade.Value = Convert.ToDateTime(reader["DATA"]);
+                        validade.Value = Convert.ToDateTime(reader["VENCIMENTO"]);
                         dias = Convert.ToInt32(devolucao.Value.Subtract(validade.Value).TotalDays);
                         usuario = Convert.ToInt32(reader["ID_USUARIO"]);
                     }
@@ -110,6 +111,8 @@ namespace Biblioteca_CSharp
             SqlConnection conn;
             SqlCommand comm;
             SqlCommand commItem;
+            SqlCommand commUser, commMulta;
+            SqlDataReader reader;
             bool bIsOperationOK = true;
 
             string connectionString = Properties.Settings.Default.BibliotecaConnectionString;
@@ -168,9 +171,31 @@ namespace Biblioteca_CSharp
 
                     commItem.Parameters.Add("@PAGO", System.Data.SqlDbType.Int);
                     commItem.Parameters["@PAGO"].Value = 0;
+
+                    commMulta = new SqlCommand("SELECT * FROM USUARIO WHERE ID=@ID", conn);
+                    commMulta.Parameters.Add("@ID", System.Data.SqlDbType.Int);
+                    commMulta.Parameters["@ID"].Value = usuario;
+                    double multaUsuario = 0;
+
+                    reader = commMulta.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        multaUsuario = Convert.ToDouble(reader["MULTA"]);
+                    }
+
+                    reader.Close();
+                    commUser = new SqlCommand("UPDATE USUARIO SET MULTA=@MULTA, ATIVO=0 WHERE ID=@ID", conn);
+
+                    commUser.Parameters.Add("@MULTA", System.Data.SqlDbType.Float);
+                    commUser.Parameters["@MULTA"].Value = multaTotal + multaUsuario;
+
+                    commUser.Parameters.Add("@ID", System.Data.SqlDbType.Int);
+                    commUser.Parameters["@ID"].Value = usuario;
+
                     try
                     {
                         commItem.ExecuteNonQuery();
+                        commUser.ExecuteNonQuery();
                     }
                     catch (Exception error)
                     {
@@ -185,11 +210,10 @@ namespace Biblioteca_CSharp
             finally
             {
                 conn.Close();
-
+                devolucaoForm.dataTable5TableAdapter.Fill(devolucaoForm.bibliotecaDataSet.DataTable5);
                 if (bIsOperationOK == true)
                 {
                     MessageBox.Show("Registro Cadastrado!", "Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    devolucaoForm.dataTable5TableAdapter.Fill(devolucaoForm.bibliotecaDataSet.DataTable5);
                     this.Close();
                 }
             }
@@ -208,7 +232,7 @@ namespace Biblioteca_CSharp
                 reader.Read();
                 codigo = reader["ID"].ToString();
             }
-            Console.WriteLine(codigo);
+            reader.Close();
             conn.Close();
             return Convert.ToInt32(codigo);
         }

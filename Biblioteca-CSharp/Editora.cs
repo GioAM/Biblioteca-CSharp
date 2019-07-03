@@ -99,14 +99,22 @@ namespace Biblioteca_CSharp
             }
             else
             {
-                MessageBox.Show("Nenhuma editora selecionado. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhuma editora selecionada Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
             }
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            UpdateEditora update = new UpdateEditora(this, Convert.ToInt32(idToModify.Text));
-            update.ShowDialog();
+            if (!String.IsNullOrEmpty(idToModify.Text))
+            {
+                UpdateEditora update = new UpdateEditora(this, Convert.ToInt32(idToModify.Text));
+                update.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma Editora selecionada. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

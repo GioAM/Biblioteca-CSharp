@@ -1,6 +1,6 @@
 ﻿namespace Biblioteca_CSharp
 {
-    partial class UpdateLocacao
+    partial class UpdateMulta
     {
         /// <summary>
         /// Required designer variable.
@@ -32,48 +32,48 @@
             this.btSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbUsuario = new System.Windows.Forms.ComboBox();
-            this.cbLivro = new System.Windows.Forms.ComboBox();
-            this.vencimento = new System.Windows.Forms.DateTimePicker();
-            this.data = new System.Windows.Forms.DateTimePicker();
             this.lbAno = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbEdicao = new System.Windows.Forms.Label();
-            this.lbNome = new System.Windows.Forms.Label();
+            this.cbDevolucao = new System.Windows.Forms.ComboBox();
             this.bibliotecaDataSet = new Biblioteca_CSharp.BibliotecaDataSet();
             this.uSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uSUARIOTableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.USUARIOTableAdapter();
-            this.lIVROBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lIVROTableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.LIVROTableAdapter();
+            this.dEVOLUCAOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dEVOLUCAOTableAdapter = new Biblioteca_CSharp.BibliotecaDataSetTableAdapters.DEVOLUCAOTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbPago = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.valor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lIVROBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dEVOLUCAOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btSalvar
             // 
-            this.btSalvar.Location = new System.Drawing.Point(336, 119);
+            this.btSalvar.Location = new System.Drawing.Point(336, 107);
             this.btSalvar.Name = "btSalvar";
             this.btSalvar.Size = new System.Drawing.Size(122, 33);
-            this.btSalvar.TabIndex = 5;
+            this.btSalvar.TabIndex = 9;
             this.btSalvar.Text = "Salvar";
             this.btSalvar.UseVisualStyleBackColor = true;
             this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.valor);
+            this.groupBox1.Controls.Add(this.cbPago);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbDevolucao);
             this.groupBox1.Controls.Add(this.cbUsuario);
-            this.groupBox1.Controls.Add(this.cbLivro);
-            this.groupBox1.Controls.Add(this.vencimento);
-            this.groupBox1.Controls.Add(this.data);
             this.groupBox1.Controls.Add(this.lbAno);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.lbEdicao);
-            this.groupBox1.Controls.Add(this.lbNome);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(446, 101);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.Size = new System.Drawing.Size(446, 89);
+            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados ";
             // 
@@ -82,45 +82,16 @@
             this.cbUsuario.DataSource = this.uSUARIOBindingSource;
             this.cbUsuario.DisplayMember = "NOME";
             this.cbUsuario.FormattingEnabled = true;
-            this.cbUsuario.Location = new System.Drawing.Point(75, 31);
+            this.cbUsuario.Location = new System.Drawing.Point(59, 46);
             this.cbUsuario.Name = "cbUsuario";
             this.cbUsuario.Size = new System.Drawing.Size(121, 21);
             this.cbUsuario.TabIndex = 16;
             this.cbUsuario.ValueMember = "ID";
             // 
-            // cbLivro
-            // 
-            this.cbLivro.DataSource = this.lIVROBindingSource;
-            this.cbLivro.DisplayMember = "NOME";
-            this.cbLivro.FormattingEnabled = true;
-            this.cbLivro.Location = new System.Drawing.Point(283, 30);
-            this.cbLivro.Name = "cbLivro";
-            this.cbLivro.Size = new System.Drawing.Size(121, 21);
-            this.cbLivro.TabIndex = 15;
-            this.cbLivro.ValueMember = "ID";
-            // 
-            // vencimento
-            // 
-            this.vencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.vencimento.Location = new System.Drawing.Point(283, 57);
-            this.vencimento.Name = "vencimento";
-            this.vencimento.Size = new System.Drawing.Size(121, 20);
-            this.vencimento.TabIndex = 14;
-            this.vencimento.Value = new System.DateTime(2019, 6, 21, 0, 0, 0, 0);
-            // 
-            // data
-            // 
-            this.data.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.data.Location = new System.Drawing.Point(75, 57);
-            this.data.Name = "data";
-            this.data.Size = new System.Drawing.Size(121, 20);
-            this.data.TabIndex = 13;
-            this.data.Value = new System.DateTime(2019, 6, 21, 0, 0, 0, 0);
-            // 
             // lbAno
             // 
             this.lbAno.AutoSize = true;
-            this.lbAno.Location = new System.Drawing.Point(218, 63);
+            this.lbAno.Location = new System.Drawing.Point(222, 49);
             this.lbAno.Name = "lbAno";
             this.lbAno.Size = new System.Drawing.Size(59, 13);
             this.lbAno.TabIndex = 3;
@@ -129,29 +100,22 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(218, 38);
+            this.label3.Location = new System.Drawing.Point(10, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Livro";
+            this.label3.Text = "Usuário";
             // 
-            // lbEdicao
+            // cbDevolucao
             // 
-            this.lbEdicao.AutoSize = true;
-            this.lbEdicao.Location = new System.Drawing.Point(10, 57);
-            this.lbEdicao.Name = "lbEdicao";
-            this.lbEdicao.Size = new System.Drawing.Size(30, 13);
-            this.lbEdicao.TabIndex = 2;
-            this.lbEdicao.Text = "Data";
-            // 
-            // lbNome
-            // 
-            this.lbNome.AutoSize = true;
-            this.lbNome.Location = new System.Drawing.Point(10, 31);
-            this.lbNome.Name = "lbNome";
-            this.lbNome.Size = new System.Drawing.Size(43, 13);
-            this.lbNome.TabIndex = 0;
-            this.lbNome.Text = "Usuário";
+            this.cbDevolucao.DataSource = this.dEVOLUCAOBindingSource;
+            this.cbDevolucao.DisplayMember = "ID";
+            this.cbDevolucao.FormattingEnabled = true;
+            this.cbDevolucao.Location = new System.Drawing.Point(287, 46);
+            this.cbDevolucao.Name = "cbDevolucao";
+            this.cbDevolucao.Size = new System.Drawing.Size(121, 21);
+            this.cbDevolucao.TabIndex = 17;
+            this.cbDevolucao.ValueMember = "ID";
             // 
             // bibliotecaDataSet
             // 
@@ -167,30 +131,66 @@
             // 
             this.uSUARIOTableAdapter.ClearBeforeFill = true;
             // 
-            // lIVROBindingSource
+            // dEVOLUCAOBindingSource
             // 
-            this.lIVROBindingSource.DataMember = "LIVRO";
-            this.lIVROBindingSource.DataSource = this.bibliotecaDataSet;
+            this.dEVOLUCAOBindingSource.DataMember = "DEVOLUCAO";
+            this.dEVOLUCAOBindingSource.DataSource = this.bibliotecaDataSet;
             // 
-            // lIVROTableAdapter
+            // dEVOLUCAOTableAdapter
             // 
-            this.lIVROTableAdapter.ClearBeforeFill = true;
+            this.dEVOLUCAOTableAdapter.ClearBeforeFill = true;
             // 
-            // UpdateLocacao
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Valor";
+            // 
+            // cbPago
+            // 
+            this.cbPago.FormattingEnabled = true;
+            this.cbPago.Items.AddRange(new object[] {
+            "0",
+            "1"});
+            this.cbPago.Location = new System.Drawing.Point(287, 19);
+            this.cbPago.Name = "cbPago";
+            this.cbPago.Size = new System.Drawing.Size(121, 21);
+            this.cbPago.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(222, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Pago";
+            // 
+            // valor
+            // 
+            this.valor.Location = new System.Drawing.Point(59, 20);
+            this.valor.Name = "valor";
+            this.valor.Size = new System.Drawing.Size(121, 20);
+            this.valor.TabIndex = 21;
+            // 
+            // UpdateMulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 163);
+            this.ClientSize = new System.Drawing.Size(476, 150);
             this.Controls.Add(this.btSalvar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "UpdateLocacao";
-            this.Text = "Alterar Locacao";
-            this.Load += new System.EventHandler(this.UpdateLocacao_Load);
+            this.Name = "UpdateMulta";
+            this.Text = "UpdateMulta";
+            this.Load += new System.EventHandler(this.UpdateMulta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotecaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lIVROBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dEVOLUCAOBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -200,17 +200,17 @@
         private System.Windows.Forms.Button btSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbUsuario;
-        private System.Windows.Forms.ComboBox cbLivro;
-        private System.Windows.Forms.DateTimePicker vencimento;
-        private System.Windows.Forms.DateTimePicker data;
         private System.Windows.Forms.Label lbAno;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbEdicao;
-        private System.Windows.Forms.Label lbNome;
+        private System.Windows.Forms.ComboBox cbDevolucao;
         private BibliotecaDataSet bibliotecaDataSet;
         private System.Windows.Forms.BindingSource uSUARIOBindingSource;
         private BibliotecaDataSetTableAdapters.USUARIOTableAdapter uSUARIOTableAdapter;
-        private System.Windows.Forms.BindingSource lIVROBindingSource;
-        private BibliotecaDataSetTableAdapters.LIVROTableAdapter lIVROTableAdapter;
+        private System.Windows.Forms.BindingSource dEVOLUCAOBindingSource;
+        private BibliotecaDataSetTableAdapters.DEVOLUCAOTableAdapter dEVOLUCAOTableAdapter;
+        private System.Windows.Forms.TextBox valor;
+        private System.Windows.Forms.ComboBox cbPago;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

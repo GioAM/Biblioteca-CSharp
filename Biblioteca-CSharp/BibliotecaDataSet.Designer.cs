@@ -74,6 +74,8 @@ namespace Biblioteca_CSharp {
         
         private global::System.Data.DataRelation relationFK_ID_LOCACAO_ITEM1;
         
+        private global::System.Data.DataRelation relationFK_ID_LOCACAO_DEVOLUCAO1;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -560,6 +562,7 @@ namespace Biblioteca_CSharp {
             this.relationFK_ID_LOCACAO_ITEM = this.Relations["FK_ID_LOCACAO_ITEM"];
             this.relationFK_ID_EDITORA1 = this.Relations["FK_ID_EDITORA1"];
             this.relationFK_ID_LOCACAO_ITEM1 = this.Relations["FK_ID_LOCACAO_ITEM1"];
+            this.relationFK_ID_LOCACAO_DEVOLUCAO1 = this.Relations["FK_ID_LOCACAO_DEVOLUCAO1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -640,6 +643,10 @@ namespace Biblioteca_CSharp {
                         this.tableLOCACAO.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDataTable4.ID_LOCACAOColumn}, false);
             this.Relations.Add(this.relationFK_ID_LOCACAO_ITEM1);
+            this.relationFK_ID_LOCACAO_DEVOLUCAO1 = new global::System.Data.DataRelation("FK_ID_LOCACAO_DEVOLUCAO1", new global::System.Data.DataColumn[] {
+                        this.tableLOCACAO.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDataTable5.ID_LOCACAOColumn}, false);
+            this.Relations.Add(this.relationFK_ID_LOCACAO_DEVOLUCAO1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5106,9 +5113,9 @@ namespace Biblioteca_CSharp {
             
             private global::System.Data.DataColumn columnNOME;
             
-            private global::System.Data.DataColumn columnLOCACAO;
-            
             private global::System.Data.DataColumn columnDATA;
+            
+            private global::System.Data.DataColumn columnID_LOCACAO;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -5161,17 +5168,17 @@ namespace Biblioteca_CSharp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn LOCACAOColumn {
+            public global::System.Data.DataColumn DATAColumn {
                 get {
-                    return this.columnLOCACAO;
+                    return this.columnDATA;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DATAColumn {
+            public global::System.Data.DataColumn ID_LOCACAOColumn {
                 get {
-                    return this.columnDATA;
+                    return this.columnID_LOCACAO;
                 }
             }
             
@@ -5212,13 +5219,16 @@ namespace Biblioteca_CSharp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DataTable5Row AddDataTable5Row(string NOME, System.DateTime DATA) {
+            public DataTable5Row AddDataTable5Row(string NOME, System.DateTime DATA, LOCACAORow parentLOCACAORowByFK_ID_LOCACAO_DEVOLUCAO1) {
                 DataTable5Row rowDataTable5Row = ((DataTable5Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         NOME,
-                        null,
-                        DATA};
+                        DATA,
+                        null};
+                if ((parentLOCACAORowByFK_ID_LOCACAO_DEVOLUCAO1 != null)) {
+                    columnValuesArray[3] = parentLOCACAORowByFK_ID_LOCACAO_DEVOLUCAO1[0];
+                }
                 rowDataTable5Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable5Row);
                 return rowDataTable5Row;
@@ -5250,8 +5260,8 @@ namespace Biblioteca_CSharp {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnNOME = base.Columns["NOME"];
-                this.columnLOCACAO = base.Columns["LOCACAO"];
                 this.columnDATA = base.Columns["DATA"];
+                this.columnID_LOCACAO = base.Columns["ID_LOCACAO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5261,10 +5271,10 @@ namespace Biblioteca_CSharp {
                 base.Columns.Add(this.columnID);
                 this.columnNOME = new global::System.Data.DataColumn("NOME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNOME);
-                this.columnLOCACAO = new global::System.Data.DataColumn("LOCACAO", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLOCACAO);
                 this.columnDATA = new global::System.Data.DataColumn("DATA", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDATA);
+                this.columnID_LOCACAO = new global::System.Data.DataColumn("ID_LOCACAO", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_LOCACAO);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -5275,12 +5285,8 @@ namespace Biblioteca_CSharp {
                 this.columnID.Unique = true;
                 this.columnNOME.AllowDBNull = false;
                 this.columnNOME.MaxLength = 254;
-                this.columnLOCACAO.AutoIncrement = true;
-                this.columnLOCACAO.AutoIncrementSeed = -1;
-                this.columnLOCACAO.AutoIncrementStep = -1;
-                this.columnLOCACAO.AllowDBNull = false;
-                this.columnLOCACAO.ReadOnly = true;
                 this.columnDATA.AllowDBNull = false;
+                this.columnID_LOCACAO.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6900,6 +6906,17 @@ namespace Biblioteca_CSharp {
                     return ((DataTable4Row[])(base.GetChildRows(this.Table.ChildRelations["FK_ID_LOCACAO_ITEM1"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public DataTable5Row[] GetDataTable5Rows() {
+                if ((this.Table.ChildRelations["FK_ID_LOCACAO_DEVOLUCAO1"] == null)) {
+                    return new DataTable5Row[0];
+                }
+                else {
+                    return ((DataTable5Row[])(base.GetChildRows(this.Table.ChildRelations["FK_ID_LOCACAO_DEVOLUCAO1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -7899,23 +7916,34 @@ namespace Biblioteca_CSharp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int LOCACAO {
-                get {
-                    return ((int)(this[this.tableDataTable5.LOCACAOColumn]));
-                }
-                set {
-                    this[this.tableDataTable5.LOCACAOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime DATA {
                 get {
                     return ((global::System.DateTime)(this[this.tableDataTable5.DATAColumn]));
                 }
                 set {
                     this[this.tableDataTable5.DATAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ID_LOCACAO {
+                get {
+                    return ((int)(this[this.tableDataTable5.ID_LOCACAOColumn]));
+                }
+                set {
+                    this[this.tableDataTable5.ID_LOCACAOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public LOCACAORow LOCACAORow {
+                get {
+                    return ((LOCACAORow)(this.GetParentRow(this.Table.ParentRelations["FK_ID_LOCACAO_DEVOLUCAO1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ID_LOCACAO_DEVOLUCAO1"]);
                 }
             }
         }
@@ -9389,7 +9417,7 @@ SELECT ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, FUNCION
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, FUNCIONA" +
@@ -9405,6 +9433,21 @@ SELECT ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, FUNCION
             this._commandCollection[2].CommandText = "SELECT ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, FUNCIONA" +
                 "RIO, LOGIN, SENHA FROM dbo.USUARIO";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, FUNCIONA" +
+                "RIO, LOGIN, SENHA FROM dbo.USUARIO\r\nWHERE ATIVO = 1";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, FUNCIONA" +
+                "RIO, LOGIN, SENHA FROM dbo.USUARIO\r\nWHERE ATIVO=1";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT        ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, F" +
+                "UNCIONARIO, LOGIN, SENHA\r\nFROM            USUARIO\r\nWHERE        (ATIVO = 1)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9450,6 +9493,45 @@ SELECT ID, NOME, CPF, IDADE, TELEFONE, ID_ENDERECO, ATIVO, MULTA, EMAIL, FUNCION
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBy1(BibliotecaDataSet.USUARIODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy2(BibliotecaDataSet.USUARIODataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy3(BibliotecaDataSet.USUARIODataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy4(BibliotecaDataSet.USUARIODataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -12817,8 +12899,8 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID";
             tableMapping.DataSetTable = "DataTable5";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("NOME", "NOME");
-            tableMapping.ColumnMappings.Add("LOCACAO", "LOCACAO");
             tableMapping.ColumnMappings.Add("DATA", "DATA");
+            tableMapping.ColumnMappings.Add("ID_LOCACAO", "ID_LOCACAO");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -12835,10 +12917,10 @@ INNER JOIN LIVRO ON ITEM_LOCACAO.ID_LIVRO = LIVRO.ID";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        USUARIO.NOME, DEVOLUCAO.ID, LOCACAO.ID AS LOCACAO, DEVOLUCAO.DATA
-FROM            USUARIO INNER JOIN
-                         DEVOLUCAO ON USUARIO.ID = DEVOLUCAO.ID INNER JOIN
-                         LOCACAO ON USUARIO.ID = LOCACAO.ID_USUARIO AND DEVOLUCAO.ID_LOCACAO = LOCACAO.ID";
+            this._commandCollection[0].CommandText = @"SELECT        DEVOLUCAO.ID, DEVOLUCAO.DATA, DEVOLUCAO.ID_LOCACAO, USUARIO.NOME
+FROM            DEVOLUCAO INNER JOIN
+                         LOCACAO ON DEVOLUCAO.ID_LOCACAO = LOCACAO.ID INNER JOIN
+                         USUARIO ON LOCACAO.ID_USUARIO = USUARIO.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

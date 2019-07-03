@@ -94,11 +94,13 @@ namespace Biblioteca_CSharp
             }
             else
             {
-                MessageBox.Show("Nenhum usuário selecionado. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhuma locação selecionada. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
             }
         }
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            Console.WriteLine(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            Console.WriteLine(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
             idToModifyItem.Text = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
             idToModify.Text = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
         }
@@ -112,7 +114,7 @@ namespace Biblioteca_CSharp
             }
             else
             {
-                MessageBox.Show("Nenhum usuário selecionado. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhuma locação selecionado. Selecione uma linha para alterar!", "Comando Inválido", MessageBoxButtons.OK);
             }
         }
 

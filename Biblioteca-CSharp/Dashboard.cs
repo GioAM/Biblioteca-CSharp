@@ -57,5 +57,11 @@ namespace Biblioteca_CSharp
         {
 
         }
+
+        private void btMultas_Click(object sender, EventArgs e)
+        {
+            Multa multa = new Multa();
+            multa.Show();
+        }
     }
 }
