@@ -95,7 +95,7 @@ namespace Biblioteca_CSharp
             }
             else
             {
-                MessageBox.Show("Nenhum usuário selecionado. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhuma devolução selecionada. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
             }
         }
 

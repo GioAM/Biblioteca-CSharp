@@ -16,5 +16,13 @@ namespace Biblioteca_CSharp
         {
             InitializeComponent();
         }
+
+        private void RelatorioLocacao_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'BibliotecaDataSet.DataTable4' table. You can move, or remove it, as needed.
+            this.DataTable4TableAdapter.Fill(this.BibliotecaDataSet.DataTable4);
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

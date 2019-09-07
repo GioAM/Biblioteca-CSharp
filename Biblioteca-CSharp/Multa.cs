@@ -145,7 +145,7 @@ namespace Biblioteca_CSharp
             }
             else
             {
-                MessageBox.Show("Nenhuma Multa selecionada. Selecione uma linha para deletar!", "Comando Inválido", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhuma Multa selecionada. Selecione uma linha para pagar!", "Comando Inválido", MessageBoxButtons.OK);
             }
 
         }
